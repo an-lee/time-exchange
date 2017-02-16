@@ -1,125 +1,158 @@
 <!--========== HEADER ==========-->
 <header class="header">
     <!-- Navbar -->
-    <nav class="navbar" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="menu-container">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="toggle-icon"></span>
-                </button>
+  <nav class="navbar" role="navigation">
+    <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="menu-container">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="toggle-icon"></span>
+              </button>
 
-                <!-- Logo -->
-                <div class="navbar-brand">
-                  <%= link_to root_path do %>
-                    <h4><i class="glyphicon glyphicon-time", style="color: #17bed2;padding-top:10px;"></i>
-                    TimeEx</h4>
+              <!-- Logo -->
+              <div class="navbar-brand">
+                <%= link_to root_path do %>
+                  <h4><i class="glyphicon glyphicon-time", style="color: #17bed2;padding-top:10px;"></i>
+                  TimeEx</h4>
+                <% end %>
+              </div>
+              <!-- End Logo -->
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse nav-collapse">
+        <div class="menu-container">
+          <ul class="navbar-nav navbar-nav-right">
+              <!-- Home -->
+            <li class="nav-item">
+                <%= link_to("首页", root_path, class:"nav-item-child active") %>
+            </li>
+              <!-- End Home -->
+
+              <!-- About -->
+            <li class="nav-item dropdown">
+                <a class="nav-item-child dropdown-toggle dropbtn" data-toggle="dropdown" href="#">
+                    时间商城 <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right">
+                  <li>
+                    <%= link_to("所有商品", products_path, class:"sub-menu") %>
+                  </li>
+                  <li>
+                    <%= link_to("购买1小时", products_path, class:"sub-menu") %>
+                  </li>
+                  <li>
+                    <%= link_to("购买1天", products_path, class:"sub-menu") %>
+                  </li>
+                  <li>
+                    <%= link_to("购买1星期", products_path, class:"sub-menu") %>
+                  </li>
+                  <li>
+                    <%= link_to("购买1个月", products_path, class:"sub-menu") %>
+                  </li>
+                  <li>
+                    <%= link_to("购买1年", products_path, class:"sub-menu") %>
+                  </li>
+                  <li>
+                    <%= link_to("购买7年", products_path, class:"sub-menu") %>
+                  </li>
+                </ul>
+            </li>
+              <!-- End About -->
+
+            <!-- Work -->
+            <li class="nav-item">
+                <%= link_to("常见问题", root_path, class:"nav-item-child") %>
+            </li>
+            <!-- End Work -->
+
+            <!-- Contact -->
+            <li class="nav-item">
+              <%= link_to("联系我们", root_path, class:"nav-item-child") %>
+            </li>
+            <!-- End Contact -->
+
+            <!-- Cart -->
+            <li class="nav-item dropdown">
+              <span class="nav-item-child">
+              <%= link_to carts_path do %>
+                <i>
+                  <span class="glyphicon glyphicon-shopping-cart", style="color: #515769;"></span>
+                  <span class="count">
+                    <%= current_cart.products.count %>
+                  </span>
+                </i>
+              <% end %>
+              </span>
+              <ul class="dropdown-menu dropdown-menu-right cart-dropdown">
+                <div class="cart-item">
+                <% current_cart.cart_items.each do |cart_item| %>
+                  <%= link_to product_path(cart_item.product) do %>
+                    <% if cart_item.product.image.present? %>
+                      <%= image_tag(cart_item.product.image.thumb.url, class: "item-thumb") %>
+                    <% else %>
+                      <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "item-thumb") %>
+                    <% end %>
                   <% end %>
+                  <div class="item-details">
+                    <h3 class="item-title">
+                      <%= link_to(cart_item.product.title, product_path(cart_item.product)) %>
+                    </h3>
+                    <h4 class="item-price">
+                      <%= cart_item.quantity %> x ¥<%= cart_item.product.price %>
+                    </h4>
+                  </div>
+                  <%= link_to cart_item_path(cart_item.product_id), class: "close-btn", method: :delete do %>
+                    <i class="glyphicon glyphicon-trash"></i>
+                    <% end %>
+                <% end %>
+              </div>
+              <div class="cart-subtotal">
+                <div class="column">
+                  <span>小计：</span>
                 </div>
-                <!-- End Logo -->
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse nav-collapse">
-                <div class="menu-container">
-                    <ul class="navbar-nav navbar-nav-right">
-                        <!-- Home -->
-                        <li class="nav-item">
-                            <%= link_to("首页", root_path, class:"nav-item-child active") %>
-                        </li>
-                        <!-- End Home -->
-
-                        <!-- About -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-item-child dropdown-toggle dropbtn" data-toggle="dropdown" href="#">
-                                时间商城 <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                              <li>
-                                <%= link_to("所有商品", products_path, class:"sub-menu") %>
-                              </li>
-                              <li>
-                                <%= link_to("购买1小时", products_path, class:"sub-menu") %>
-                              </li>
-                              <li>
-                                <%= link_to("购买1天", products_path, class:"sub-menu") %>
-                              </li>
-                              <li>
-                                <%= link_to("购买1星期", products_path, class:"sub-menu") %>
-                              </li>
-                              <li>
-                                <%= link_to("购买1个月", products_path, class:"sub-menu") %>
-                              </li>
-                              <li>
-                                <%= link_to("购买1年", products_path, class:"sub-menu") %>
-                              </li>
-                              <li>
-                                <%= link_to("购买7年", products_path, class:"sub-menu") %>
-                              </li>
-                            </ul>
-                        </li>
-                        <!-- End About -->
-
-                        <!-- Work -->
-                        <li class="nav-item">
-                            <%= link_to("常见问题", root_path, class:"nav-item-child") %>
-                        </li>
-                        <!-- End Work -->
-
-                        <!-- Contact -->
-                        <li class="nav-item">
-                          <%= link_to("联系我们", root_path, class:"nav-item-child") %>
-                        </li>
-                        <!-- End Contact -->
-
-                        <!-- Cart -->
-                        <li class="nav-item">
-                          <span class="nav-item-child">
-                          <%= link_to carts_path do %>
-                            <i>
-                              <span class="glyphicon glyphicon-shopping-cart", style="color: #515769;"></span>
-                              <span class="count">
-                                <%= current_cart.products.count %>
-                              </span>
-                            </i>
-                          <% end %>
-                          </span>
-                        </li>
-                        <!-- End Cart -->
-
-                        <!-- account -->
-                        <li class="nav-item dropdown">
-                          <span class="nav-item-child">
-                          <%= link_to carts_path do %>
-                              <span class="glyphicon glyphicon-user", style="color: #515769;"></span>
-                          <% end %>
-                          </span>
-                          <ul class="dropdown-menu dropdown-menu-right">
-                            <% if !current_user %>
-                            <li>
-                              <%= link_to("注册", new_user_registration_path, class:"sub-menu") %>
-                            </li>
-                            <li>
-                              <%= link_to("登录", new_user_session_path, class:"sub-menu") %>
-                            </li>
-                            <% else %>
-                            <li>
-                              <%= link_to("我的订单", account_orders_path, class:"sub-menu") %>
-                            </li>
-                            <li class="dropdown-divider"></li>
-                            <li>
-                              <%= link_to("登出", destroy_user_session_path, class:'sub-menu', method: :delete ) %>
-                            </li>
-                            <% end %>
-                          </ul>
-                        </li>
-                        <!-- End account -->
-                    </ul>
+                <div class="column">
+                  <span class="amount">¥ <%= render_cart_total_price(current_cart) %></span>
                 </div>
-            </div>
-            <!-- End Navbar Collapse -->
+              </div><!-- .cart-subtotal -->
+
+              </ul>
+            </li>
+          <!-- End Cart -->
+
+        <!-- account -->
+        <li class="nav-item dropdown">
+          <span class="nav-item-child">
+          <%= link_to carts_path do %>
+              <span class="glyphicon glyphicon-user", style="color: #515769;"></span>
+          <% end %>
+          </span>
+          <ul class="dropdown-menu dropdown-menu-right">
+            <% if !current_user %>
+            <li>
+              <%= link_to("注册", new_user_registration_path, class:"sub-menu") %>
+            </li>
+            <li>
+              <%= link_to("登录", new_user_session_path, class:"sub-menu") %>
+            </li>
+            <% else %>
+            <li>
+              <%= link_to("我的订单", account_orders_path, class:"sub-menu") %>
+            </li>
+            <li class="dropdown-divider"></li>
+            <li>
+              <%= link_to("登出", destroy_user_session_path, class:'sub-menu', method: :delete ) %>
+            </li>
+            <% end %>
+          </ul>
+        </li>
+        <!-- End account -->
+            </ul>
         </div>
-    </nav>
+      </div>
+    <!-- End Navbar Collapse -->
+    </div>
+  </nav>
     <!-- Navbar -->
 </header>
