@@ -29,13 +29,9 @@
      opacity:0.9;
  }
 
- /* Put navbar in center */
- .navbar li a, .navbar .navbar-brand {
-     color: #606060 !important;
- }
 
  /* Add a gray color to all navbar links */
- .navbar li a, .navbar .navbar-brand {
+ .navbar li span, .navbar .navbar-brand {
      color: #606060 !important;
  }
 
@@ -81,17 +77,93 @@
      font-family: Montserrat, sans-serif;
  }
 
- footer {
-     background-color: #2d2d30;
-     color: #f5f5f5;
-     padding: 32px;
+ .count {
+   position: absolute;
+   display: block;
+   width: 16px;
+   height: 16px;
+   line-height: 16px;
+   font-size: 12px;
+   color: #fff;
+   text-align: center;
+   border-radius: 50%;
+   background-color: #77cde3;
+   top: -2px;
+   right: -17px;
  }
 
- footer a {
-     color: #f5f5f5;
+/* footer */
+ .footer {
+   display: table;
+   width: 100%;
+   table-layout: fixed;
  }
 
- footer a:hover {
-     color: #777;
-     text-decoration: none;
+ .footer .column {
+   position: relative;
+   display: table-cell;
+   vertical-align: top;
+   text-align: center;
+   background-color: #f5f5f5;
+   padding: 45px 25px;
+ }
+
+ .footer .column:nth-of-type(even) {
+   background-color: #f0f0f0;
+ }
+
+ @media screen and (max-width: 991px) {
+   .footer .column {
+     display: block;
+     width: 100%;
+     padding: 45px 15px;
+   }
+ }
+
+ .footer .copyright {
+   font-size: 12px;
+   color: #999;
+   margin-bottom: 0;
+   margin-top: -5px;
+ }
+
+ .footer .cards {
+   width: 100%;
+   max-width: 190px;
+   margin: 0 auto;
+ }
+
+ .footer .subscribe-form {
+   max-width: 365px;
+   margin: 0 auto;
+ }
+
+ .footer .subscribe-form .form-control {
+   border-color: #fff;
+ }
+
+ .footer .subscribe-form .form-control:focus {
+   border-color: #77cde3;
+ }
+
+ .footer button[type='submit'] {
+   position: absolute;
+   display: block;
+   font-size: 20px;
+   border: none;
+   background: none;
+   top: 50%;
+   margin-top: -19px;
+   right: 7px;
+   -webkit-transition: color 0.3s;
+   -o-transition: color 0.3s;
+   transition: color 0.3s;
+ }
+
+ .footer button[type='submit']:focus {
+   outline: none;
+ }
+
+ .footer button[type='submit']:hover {
+   color: #77cde3;
  }
