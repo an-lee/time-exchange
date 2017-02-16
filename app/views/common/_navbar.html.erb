@@ -86,8 +86,8 @@
               <% end %>
               </span>
               <ul class="dropdown-menu dropdown-menu-right cart-dropdown">
-                <div class="cart-item">
                 <% current_cart.cart_items.each do |cart_item| %>
+                <div class="cart-item">
                   <%= link_to product_path(cart_item.product) do %>
                     <% if cart_item.product.image.present? %>
                       <%= image_tag(cart_item.product.image.thumb.url, class: "item-thumb") %>
@@ -104,10 +104,10 @@
                     </h4>
                   </div>
                   <%= link_to cart_item_path(cart_item.product_id), class: "close-btn", method: :delete do %>
-                    <i class="glyphicon glyphicon-trash"></i>
+                    <i class="glyphicon glyphicon-trash" style="color:#515769;font-size:12px;"></i>
                     <% end %>
-                <% end %>
               </div>
+              <% end %>
               <div class="cart-subtotal">
                 <div class="column">
                   <span>小计：</span>
@@ -123,11 +123,9 @@
 
         <!-- account -->
         <li class="nav-item dropdown">
-          <span class="nav-item-child">
-          <%= link_to carts_path do %>
-              <span class="glyphicon glyphicon-user", style="color: #515769;"></span>
-          <% end %>
-          </span>
+          <a href="#", class="nav-item-child">
+            <span class="glyphicon glyphicon-user", style="color: #515769;"></span>
+          </a>
           <ul class="dropdown-menu dropdown-menu-right">
             <% if !current_user %>
             <li>
@@ -137,6 +135,11 @@
               <%= link_to("登录", new_user_session_path, class:"sub-menu") %>
             </li>
             <% else %>
+            <% if current_user.admin? %>
+            <li>
+              <%= link_to("管理员后台", admin_products_path, class:"sub-menu") %>
+            </li>
+            <% end %>
             <li>
               <%= link_to("我的订单", account_orders_path, class:"sub-menu") %>
             </li>
