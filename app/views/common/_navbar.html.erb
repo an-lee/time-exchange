@@ -13,7 +13,7 @@
               <!-- Logo -->
               <div class="navbar-brand">
                 <%= link_to root_path do %>
-                  <h4><i class="glyphicon glyphicon-time", style="color: #17bed2;padding-top:10px;"></i>
+                  <h4><i class="glyphicon glyphicon-time", style="color: #17bed2;padding-top:20px;"></i>
                   TimeEx</h4>
                 <% end %>
               </div>
@@ -31,33 +31,8 @@
               <!-- End Home -->
 
               <!-- About -->
-            <li class="nav-item dropdown">
-                <a class="nav-item-child dropdown-toggle dropbtn" data-toggle="dropdown" href="#">
-                    时间商城 <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-right">
-                  <li>
-                    <%= link_to("所有商品", products_path, class:"sub-menu") %>
-                  </li>
-                  <li>
-                    <%= link_to("购买1小时", products_path, class:"sub-menu") %>
-                  </li>
-                  <li>
-                    <%= link_to("购买1天", products_path, class:"sub-menu") %>
-                  </li>
-                  <li>
-                    <%= link_to("购买1星期", products_path, class:"sub-menu") %>
-                  </li>
-                  <li>
-                    <%= link_to("购买1个月", products_path, class:"sub-menu") %>
-                  </li>
-                  <li>
-                    <%= link_to("购买1年", products_path, class:"sub-menu") %>
-                  </li>
-                  <li>
-                    <%= link_to("购买7年", products_path, class:"sub-menu") %>
-                  </li>
-                </ul>
+            <li class="nav-item">
+                <%= link_to("时间商城", products_path, class:"nav-item-child") %>
             </li>
               <!-- End About -->
 
@@ -79,7 +54,7 @@
               <%= link_to carts_path do %>
                 <i>
                   <span class="glyphicon glyphicon-shopping-cart", style="color: #515769;"></span>
-                  <span class="count">
+                  <span class="badge" style="background-color: #77cde3;margin-bottom:15px;">
                     <%= current_cart.products.count %>
                   </span>
                 </i>
