@@ -14,17 +14,19 @@
           <%= @product.description %>
         </p>
       </div>
-      <div>
-        numbers: <%= @product.quantity %>
-      </div>
-      <div class="product-price">
+      <b>
+        库存: <%= @product.quantity %>
+      </b>
+      <div class="item-price">
         ¥ <%= @product.price %>
       </div>
       <div class="pull-right">
         <% if @product.quantity.present? && @product.quantity > 0 %>
           <%= link_to("Add into Cart", add_to_cart_product_path(@product), :method => :post, :class => "btn btn-primary btn-lg btn-danger") %>
         <% else %>
-          Sold Out
+          <div class="btn btn-danger">
+            Sold Out
+          </div>
         <% end %>
       </div>
     </div>

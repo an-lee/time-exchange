@@ -32,117 +32,105 @@
         </div>
         <!-- -->
         <div id="1hour" class="tab-pane fade">
-          <div class="content-md">
-              <div class="row">
-                <% @products_a.each do |product| %>
-                  <div class="col-xs-12 col-md-3">
-                  <%= link_to product_path(product) do %>
-                    <% if product.image.present? %>
-                      <%= image_tag(product.image.thumb.url, class:"thumbnail") %>
-                    <% else %>
-                      <%= image_tag("http://placehold.it/200x200&text=No Pic", class:"thumbnail") %>
-                    <% end %>
-                    <%= product.title %> ¥ <%= product.price %>
+          <div class="content-md col-md-12" style="text-align:center;">
+            <div class="row">
+              <% @products_a.each do |product| %>
+                <div class="col-xs-12 col-md-3" style="margin-bottom: 30px;">
+                  <% if product.image.present? %>
+                    <%= link_to image_tag(product.image.thumb.url),product_path(product) , class:"thumbnail" %>
+                  <% else %>
+                    <%= link_to image_tag("http://placehold.it/200x200&text=No Pic"),product_path(product) , class:"thumbnail" %>
                   <% end %>
-                </div>
-                <% end %>
+                <%= product.title %> <span style="color:#ef0568;">  ¥<%= product.price %></span>
               </div>
+              <% end %>
             </div>
+          </div>
         </div>
         <!-- -->
         <div id="1day" class="tab-pane fade">
-          <div class="content-md">
-              <div class="row">
-                <% @products_b.each do |product| %>
-                  <div class="col-xs-12 col-md-3">
-                  <%= link_to product_path(product) do %>
-                    <% if product.image.present? %>
-                      <%= image_tag(product.image.thumb.url, class:"thumbnail") %>
-                    <% else %>
-                      <%= image_tag("http://placehold.it/200x200&text=No Pic", class:"thumbnail") %>
-                    <% end %>
-                    <%= product.title %> ¥ <%= product.price %>
+          <div class="content-md col-md-12" style="text-align:center;">
+            <div class="row">
+              <% @products_b.each do |product| %>
+                <div class="col-xs-12 col-md-3" style="margin-bottom: 30px;">
+                  <% if product.image.present? %>
+                    <%= link_to image_tag(product.image.thumb.url),product_path(product) , class:"thumbnail" %>
+                  <% else %>
+                    <%= link_to image_tag("http://placehold.it/200x200&text=No Pic"),product_path(product) , class:"thumbnail" %>
                   <% end %>
-                </div>
-                <% end %>
+                <%= product.title %> <span style="color:#ef0568;">  ¥<%= product.price %></span>
               </div>
+              <% end %>
             </div>
+          </div>
         </div>
         <!-- -->
         <div id="1week" class="tab-pane fade">
-            <div class="content-md">
-              <div class="row">
-                <% @products_c.each do |product| %>
-                  <div class="col-xs-12 col-md-3">
-                  <%= link_to product_path(product) do %>
-                    <% if product.image.present? %>
-                      <%= image_tag(product.image.thumb.url, class:"thumbnail") %>
-                    <% else %>
-                      <%= image_tag("http://placehold.it/200x200&text=No Pic", class:"thumbnail") %>
-                    <% end %>
-                    <%= product.title %> ¥ <%= product.price %>
+          <div class="content-md col-md-12" style="text-align:center;">
+            <div class="row">
+              <% @products_c.each do |product| %>
+                <div class="col-xs-12 col-md-3" style="margin-bottom: 30px;">
+                  <% if product.image.present? %>
+                    <%= link_to image_tag(product.image.thumb.url),product_path(product) , class:"thumbnail" %>
+                  <% else %>
+                    <%= link_to image_tag("http://placehold.it/200x200&text=No Pic"),product_path(product) , class:"thumbnail" %>
                   <% end %>
-                </div>
-                <% end %>
+                <%= product.title %> <span style="color:#ef0568;">  ¥<%= product.price %></span>
               </div>
+              <% end %>
             </div>
+          </div>
           </div>
         <!-- -->
         <div id="3month" class="tab-pane fade">
-            <div class="content-md">
-              <div class="row">
-                <% @products_d.each do |product| %>
-                  <div class="col-xs-12 col-md-3">
-                  <%= link_to product_path(product) do %>
-                    <% if product.image.present? %>
-                      <%= image_tag(product.image.thumb.url, class:"thumbnail") %>
-                    <% else %>
-                      <%= image_tag("http://placehold.it/200x200&text=No Pic", class:"thumbnail") %>
-                    <% end %>
-                    <%= product.title %> ¥ <%= product.price %>
+          <div class="content-md col-md-12" style="text-align:center;">
+            <div class="row">
+              <% @products_d.each do |product| %>
+                <div class="col-xs-12 col-md-3" style="margin-bottom: 30px;">
+                  <% if product.image.present? %>
+                    <%= link_to image_tag(product.image.thumb.url),product_path(product) , class:"thumbnail" %>
+                  <% else %>
+                    <%= link_to image_tag("http://placehold.it/200x200&text=No Pic"),product_path(product) , class:"thumbnail" %>
                   <% end %>
-                </div>
-                <% end %>
+                <%= product.title %> <span style="color:#ef0568;">  ¥<%= product.price %></span>
               </div>
+              <% end %>
             </div>
+          </div>
           </div>
         <!-- -->
         <div id="1year" class="tab-pane fade">
-            <div class="content-md">
-              <div class="row">
-                <% @products_e.each do |product| %>
-                  <div class="col-xs-12 col-md-3">
-                  <%= link_to product_path(product) do %>
-                    <% if product.image.present? %>
-                      <%= image_tag(product.image.thumb.url, class:"thumbnail") %>
-                    <% else %>
-                      <%= image_tag("http://placehold.it/200x200&text=No Pic", class:"thumbnail") %>
-                    <% end %>
-                    <%= product.title %> ¥ <%= product.price %>
+          <div class="content-md col-md-12" style="text-align:center;">
+            <div class="row">
+              <% @products_e.each do |product| %>
+                <div class="col-xs-12 col-md-3" style="margin-bottom: 30px;">
+                  <% if product.image.present? %>
+                    <%= link_to image_tag(product.image.thumb.url),product_path(product) , class:"thumbnail" %>
+                  <% else %>
+                    <%= link_to image_tag("http://placehold.it/200x200&text=No Pic"),product_path(product) , class:"thumbnail" %>
                   <% end %>
-                </div>
-                <% end %>
+                <%= product.title %> <span style="color:#ef0568;">  ¥<%= product.price %></span>
               </div>
+              <% end %>
             </div>
+          </div>
           </div>
         <!-- -->
         <div id="7year" class="tab-pane fade">
-            <div class="content-md">
-              <div class="row">
-                <% @products_f.each do |product| %>
-                  <div class="col-xs-12 col-md-3">
-                  <%= link_to product_path(product) do %>
-                    <% if product.image.present? %>
-                      <%= image_tag(product.image.thumb.url, class:"thumbnail") %>
-                    <% else %>
-                      <%= image_tag("http://placehold.it/200x200&text=No Pic", class:"thumbnail") %>
-                    <% end %>
-                    <%= product.title %> ¥ <%= product.price %>
+          <div class="content-md col-md-12" style="text-align:center;">
+            <div class="row">
+              <% @products_e.each do |product| %>
+                <div class="col-xs-12 col-md-3" style="margin-bottom: 30px;">
+                  <% if product.image.present? %>
+                    <%= link_to image_tag(product.image.thumb.url),product_path(product) , class:"thumbnail" %>
+                  <% else %>
+                    <%= link_to image_tag("http://placehold.it/200x200&text=No Pic"),product_path(product) , class:"thumbnail" %>
                   <% end %>
-                </div>
-                <% end %>
+                <%= product.title %> <span style="color:#ef0568;">  ¥<%= product.price %></span>
               </div>
+              <% end %>
             </div>
+          </div>
           </div>
 
       </div>
