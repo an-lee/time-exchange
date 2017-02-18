@@ -27,6 +27,49 @@
  @import "simple-line-icons";
 
 
+
+ th {
+   text-align: left;
+ }
+
+ table {
+   width: 100%;
+   max-width: 100%;
+   margin-bottom: 24px;
+ }
+
+ table > thead > tr > th,
+ table > thead > tr > td,
+ table > tbody > tr > th,
+ table > tbody > tr > td,
+ table > tfoot > tr > th,
+ table > tfoot > tr > td {
+   padding: 15px;
+   line-height: 1.5;
+   vertical-align: top;
+   border-bottom: 1px solid #ededed;
+ }
+
+ table > thead > tr > th,
+ table > thead > tr > td {
+   border-bottom-width: 2px !important;
+ }
+
+ table > thead > tr > th {
+   vertical-align: bottom;
+   border-bottom: 1px solid #ededed;
+ }
+
+ table > tbody + tbody {
+   border-top: 2px solid #ededed;
+ }
+
+ .table-responsive {
+   overflow-x: auto;
+   min-height: 0.01%;
+ }
+
+
  .form-control {
    display: block;
    width: 100%;
