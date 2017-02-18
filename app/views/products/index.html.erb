@@ -5,6 +5,7 @@
       <ul class="nav nav-tabs">
           <li class="active"><a data-toggle="all" href="#home">All</a></li>
           <li><a data-toggle="tab" href="#1hour">One Hour</a></li>
+          <li><a data-toggle="tab" href="#1day">One Day</a></li>
           <li><a data-toggle="tab" href="#1week">One Week</a></li>
           <li><a data-toggle="tab" href="#3month">Three Months</a></li>
           <li><a data-toggle="tab" href="#1year">One Year</a></li>
@@ -35,7 +36,26 @@
         <div id="1hour" class="tab-pane fade">
           <div class="content-md">
               <div class="row">
-                <% @products.each do |product| %>
+                <% @products_a.each do |product| %>
+                  <div class="col-xs-12 col-md-3">
+                  <%= link_to product_path(product) do %>
+                    <% if product.image.present? %>
+                      <%= image_tag(product.image.thumb.url, class:"thumbnail") %>
+                    <% else %>
+                      <%= image_tag("http://placehold.it/200x200&text=No Pic", class:"thumbnail") %>
+                    <% end %>
+                    <%= product.title %> ¥ <%= product.price %>
+                  <% end %>
+                </div>
+                <% end %>
+              </div>
+            </div>
+        </div>
+        <!-- -->
+        <div id="1day" class="tab-pane fade">
+          <div class="content-md">
+              <div class="row">
+                <% @products_b.each do |product| %>
                   <div class="col-xs-12 col-md-3">
                   <%= link_to product_path(product) do %>
                     <% if product.image.present? %>
@@ -54,7 +74,7 @@
         <div id="1week" class="tab-pane fade">
             <div class="content-md">
               <div class="row">
-                <% @products.each do |product| %>
+                <% @products_c.each do |product| %>
                   <div class="col-xs-12 col-md-3">
                   <%= link_to product_path(product) do %>
                     <% if product.image.present? %>
@@ -73,7 +93,7 @@
         <div id="3month" class="tab-pane fade">
             <div class="content-md">
               <div class="row">
-                <% @products.each do |product| %>
+                <% @products_d.each do |product| %>
                   <div class="col-xs-12 col-md-3">
                   <%= link_to product_path(product) do %>
                     <% if product.image.present? %>
@@ -92,7 +112,7 @@
         <div id="1year" class="tab-pane fade">
             <div class="content-md">
               <div class="row">
-                <% @products.each do |product| %>
+                <% @products_e.each do |product| %>
                   <div class="col-xs-12 col-md-3">
                   <%= link_to product_path(product) do %>
                     <% if product.image.present? %>
@@ -111,7 +131,7 @@
         <div id="7year" class="tab-pane fade">
             <div class="content-md">
               <div class="row">
-                <% @products.each do |product| %>
+                <% @products_f.each do |product| %>
                   <div class="col-xs-12 col-md-3">
                   <%= link_to product_path(product) do %>
                     <% if product.image.present? %>

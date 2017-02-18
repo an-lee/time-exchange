@@ -1,6 +1,12 @@
 class ProductsController < ApplicationController
   def index
     @products = Product.all
+    @products_a = Product.where(:category => '1_hour')
+    @products_b = Product.where(:category => '1_day')
+    @products_c = Product.where(:category => '1_week')
+    @products_d = Product.where(:category => '3_month')
+    @products_e = Product.where(:category => '1_year')
+    @products_f = Product.where(:category => '7_year')
   end
 
   def show
