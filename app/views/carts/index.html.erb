@@ -1,7 +1,38 @@
-<div class="row">
+<div class="container">
   <div class="col-md-12">
     <%= link_to("Clean the Cart", clean_carts_path, method: :delete, class: "pull-right", style: "text-decoration: underline;", data: {confirm: "Are you sure to clean the cart?"}) %>
     <h2>Cart</h2>
+
+    <div class="item">
+      <% current_cart.cart_items.each do |cart_item| %>
+        <%= link_to product_path(cart_item.product) do %>
+          <% if cart_item.product.image.present? %>
+            <%= image_tag(cart_item.product.image.thumb.url, class: "thumbnail") %>
+          <% else %>
+            <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail") %>
+          <% end %>
+        <% end %>
+      <div class="item-details">
+
+          <h3 class="item-title">
+            <%= link_to(cart_item.product.title, product_path(cart_item.product)) %>
+          </h3>
+          <h4 class="item-price">
+            <%= cart_item.product.price %>
+          </h4>
+          <div class="count-input">
+            <a class="incr-btn" data-action="decrease" href="#">–</a>
+            <input class="quantity" type="text" value="1">
+            <a class="incr-btn" data-action="increase" href="#">+</a>
+          </div>
+      </div>
+      <% end %>
+    </div>
+
+    <a href="#" class="item-remove" data-toggle="tooltip" data-placement="top" title="Remove">
+      <i class="material-icons remove_shopping_cart"></i>
+    </a>
+
     <table class="table table-bordered">
       <thead>
         <tr>
