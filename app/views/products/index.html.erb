@@ -119,7 +119,7 @@
         <div id="7year" class="tab-pane fade">
           <div class="content-md col-md-12" style="text-align:center;">
             <div class="row">
-              <% @products_e.each do |product| %>
+              <% @products_f.each do |product| %>
                 <div class="col-xs-12 col-md-3" style="margin-bottom: 30px;">
                   <% if product.image.present? %>
                     <%= link_to image_tag(product.image.thumb.url),product_path(product) , class:"thumbnail" %>
