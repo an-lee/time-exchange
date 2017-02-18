@@ -29,9 +29,12 @@
               <a class="incr-btn" data-action="increase" href="#">+</a>
             </div>
         </div>
-        <%= link_to cart_item_path(cart_item.product_id), class: "item-remove", method: :delete do %>
-          <i class="glyphicon glyphicon-trash remove_shopping_cart"></i>
-          <% end %>
+        <div class="row">
+          <%= link_to cart_item_path(cart_item.product_id), class: "item-remove", method: :delete do %>
+            <i class="glyphicon glyphicon-trash remove_shopping_cart"></i>
+            <% end %>
+        </div>
+
       </div>
       <% end %>
     </div>
