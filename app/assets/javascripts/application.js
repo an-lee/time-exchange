@@ -15,4 +15,16 @@
 //= require turbolinks
 //= require bootstrap/alert
 //= require bootstrap/dropdown
+//= require bootstrap/carousel
+//= require bootstrap/collapse
+//= require bootstrap/tab
+//= require bootstrap/modal
+//= require masonry/masonry.min
+//= require isotope/jquery.isotope
+//= require jquery.wow.min
+//= require jquery.back-to-top
+//= require jquery.smooth-scroll
+//= require components/swiper.min
+//= require components/wow.min
+//= require components/swiper.min
 //= require_tree .

@@ -1,6 +1,65 @@
-<footer class="container" style="margin-top: 100px;">
-    <p class="text-center">Copyright ©2016 Rails101
-        <br>Design by an-lee
 
-    </p>
+<!--========== FOOTER ==========-->
+<footer class="footer">
+    <!-- Links -->
+    <div class="section-seperator">
+        <div class="content-md container">
+            <div class="row">
+                <div class="col-sm-2 sm-margin-b-30">
+                    <!-- List -->
+                    <ul class="list-unstyled footer-list">
+                        <li class="footer-list-item"><%= link_to("HOME", root_path) %></li>
+                        <li class="footer-list-item"><%= link_to("TIME SHOP", products_path) %></li>
+                        <li class="footer-list-item"><%= link_to("FQA", products_path) %></li>
+                        <li class="footer-list-item"><%= link_to("CONTACT", products_path) %></li>
+                    </ul>
+                    <!-- End List -->
+                </div>
+                <div class="col-sm-2 sm-margin-b-30">
+                    <!-- List -->
+                    <ul class="list-unstyled footer-list">
+                        <li class="footer-list-item"><a href="http://twitter.com/">Twitter</a></li>
+                        <li class="footer-list-item"><a href="http://facebook.com/">Facebook</a></li>
+                        <li class="footer-list-item"><a href="http://intagram.com/">Instagram</a></li>
+                        <li class="footer-list-item"><a href="http://youtube.com/">YouTube</a></li>
+                    </ul>
+                    <!-- End List -->
+                </div>
+                <div class="col-sm-3">
+                    <!-- List -->
+                    <ul class="list-unstyled footer-list">
+                        <li class="footer-list-item"><a href="http://an-lee.pro/">Subscribe to Our Newsletter</a></li>
+                        <li class="footer-list-item"><a href="http://an-lee.pro/">Privacy Policy</a></li>
+                        <li class="footer-list-item"><a href="http://an-lee.pro/">Terms &amp; Conditions</a></li>
+                    </ul>
+                    <!-- End List -->
+                </div>
+            </div>
+            <!--// end row -->
+        </div>
+    </div>
+    <!-- End Links -->
+
+    <!-- Copyright -->
+    <div class="content container">
+        <div class="row">
+            <div class="col-xs-6">
+              <h4><i class="glyphicon glyphicon-time", style="color: #17bed2;"></i>
+              TimeEx</h4>
+            </div>
+            <div class="col-xs-6 text-right">
+                <p class="margin-b-0">
+                  <%= link_to root_path do %>
+                    TimeEx
+                  <% end %>
+                  Design by:
+                  <a href="https://an-lee.pro" data-toggle="tooltip" title="Visit an-lee's blog">an-lee</a> & <a href="https://meiputi-blog.logdown.com" data-toggle="tooltip" title="Visit meiputi's blog">meiputi</a></p>
+            </div>
+        </div>
+        <!--// end row -->
+    </div>
+    <!-- End Copyright -->
 </footer>
+<!--========== END FOOTER ==========-->
+<!-- Back To Top -->
+<a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>

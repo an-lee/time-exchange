@@ -1,53 +1,136 @@
-<nav class="navbar navbar-default" role="navigation">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/">JDstore</a>
-        </div>
+<!--========== HEADER ==========-->
+<header class="header">
+    <!-- Navbar -->
+  <nav class="navbar" role="navigation">
+    <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="menu-container">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="toggle-icon"></span>
+              </button>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <li class="active">
-              <%= link_to("Product", products_path) %>
-            </li>
-          </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li>
-                <%= link_to carts_path do %>
-                  Cart <i class="fa fa-shopping-cart"> </i> ( <%= current_cart.products.count %> )
+              <!-- Logo -->
+              <div class="navbar-brand">
+                <%= link_to root_path do %>
+                  <h4><i class="glyphicon glyphicon-time", style="color: #17bed2;padding-top:20px;"></i>
+                  TimeEx</h4>
                 <% end %>
-              </li>
-            <% if !current_user %>
-              <li>
-                <%= link_to("Sign up", new_user_registration_path) %> </li>
-              <li>
-                <%= link_to("Sign in", new_user_session_path) %>
-              </li>
-            <% else %>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    Hi!, <%= current_user.email %>
-                    <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                    <% if current_user.admin? %>
-                      <li>
-                        <%= link_to("Admin Panel", admin_products_path) %>
-                      </li>
+              </div>
+              <!-- End Logo -->
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse nav-collapse">
+        <div class="menu-container">
+          <ul class="navbar-nav navbar-nav-right">
+              <!-- Home -->
+            <li class="nav-item">
+                <%= link_to("首页", root_path, class:"nav-item-child active") %>
+            </li>
+              <!-- End Home -->
+
+              <!-- Shop -->
+            <li class="nav-item">
+                <%= link_to("时间商城", products_path, class:"nav-item-child") %>
+            </li>
+              <!-- End Shop -->
+
+            <!-- FQA -->
+            <li class="nav-item">
+                <%= link_to("常见问题", root_path, class:"nav-item-child") %>
+            </li>
+            <!-- End FQA -->
+
+            <!-- Contact -->
+            <li class="nav-item">
+              <%= link_to("联系我们", root_path, class:"nav-item-child") %>
+            </li>
+            <!-- End Contact -->
+
+            <!-- Cart -->
+            <li class="nav-item dropdown">
+              <span class="nav-item-child">
+              <%= link_to carts_path do %>
+                <i>
+                  <span class="glyphicon glyphicon-shopping-cart", style="color: #515769;"></span>
+                  <span class="badge" style="background-color: #77cde3;margin-bottom:15px;">
+                    <%= current_cart.products.count %>
+                  </span>
+                </i>
+              <% end %>
+              </span>
+              <ul class="dropdown-menu dropdown-menu-right cart-dropdown">
+                <% current_cart.cart_items.each do |cart_item| %>
+                <div class="cart-item">
+                  <%= link_to product_path(cart_item.product) do %>
+                    <% if cart_item.product.image.present? %>
+                      <%= image_tag(cart_item.product.image.thumb.url, class: "item-thumb") %>
+                    <% else %>
+                      <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "item-thumb") %>
                     <% end %>
-                    <li>
-                      <%= link_to("My Oders List", account_orders_path) %>
-                    </li>
-                    <li>
-                      <%= link_to(content_tag(:i, "Sign out", class:'fa fa-sign-out'), destroy_user_session_path(:authenticity_token => form_authenticity_token()), method: :delete) %>
-                    </li>
-                </ul>
-              </li>
+                  <% end %>
+                  <div class="item-details">
+                    <h3 class="item-title">
+                      <%= link_to(cart_item.product.title, product_path(cart_item.product)) %>
+                    </h3>
+                    <h4 class="item-price">
+                      <%= cart_item.quantity %> x ¥<%= cart_item.product.price %>
+                    </h4>
+                  </div>
+                  <%= link_to cart_item_path(cart_item.product_id), class: "close-btn", method: :delete do %>
+                    <i class="glyphicon glyphicon-trash" style="color:#515769;font-size:12px;"></i>
+                    <% end %>
+              </div>
+              <% end %>
+              <div class="cart-subtotal">
+                <div class="column">
+                  <span>小计：</span>
+                </div>
+                <div class="column">
+                  <span class="amount">¥ <%= render_cart_total_price(current_cart) %></span>
+                </div>
+              </div><!-- .cart-subtotal -->
+
+              </ul>
+            </li>
+          <!-- End Cart -->
+
+        <!-- account -->
+        <li class="nav-item dropdown">
+          <a href="#", class="nav-item-child">
+            <span class="glyphicon glyphicon-user", style="color: #515769;"></span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-right">
+            <% if !current_user %>
+            <li>
+              <%= link_to("注册", new_user_registration_path, class:"sub-menu") %>
+            </li>
+            <li>
+              <%= link_to("登录", new_user_session_path, class:"sub-menu") %>
+            </li>
+            <% else %>
+            <% if current_user.admin? %>
+            <li>
+              <%= link_to("管理员后台", admin_products_path, class:"sub-menu") %>
+            </li>
             <% end %>
+            <li>
+              <%= link_to("我的订单", account_orders_path, class:"sub-menu") %>
+            </li>
+            <li class="dropdown-divider"></li>
+            <li>
+              <%= link_to("登出", destroy_user_session_path, class:'sub-menu', method: :delete ) %>
+            </li>
+            <% end %>
+          </ul>
+        </li>
+        <!-- End account -->
             </ul>
         </div>
-        <!-- /.navbar-collapse -->
+      </div>
+    <!-- End Navbar Collapse -->
     </div>
-    <!-- /.container-fluid -->
-</nav>
+  </nav>
+    <!-- Navbar -->
+</header>
