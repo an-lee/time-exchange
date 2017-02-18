@@ -8,6 +8,11 @@
 
 # products.delete_all
 
+create_admin_account = User.create([email: 'admin@gmail.com', password: '111111', password_confirmation: '111111', is_admin: 'true'])
+puts "Admin account created."
+create_normal_account = User.create([email: 'example@gmail.com', password: '111111', password_confirmation: '111111', is_admin: 'false'])
+puts "Normal account created."
+
 # 1_hour_product
 products =[{title:"代购咖啡",
 	        description: "珍贵的时间留给重要的事情",
@@ -17,21 +22,21 @@ products =[{title:"代购咖啡",
 	        description: "珍贵的时间留给重要的事情",
 	        image_path: "#{Rails.root}/app/assets/images/1_hour/paidui.png"}
 ]
-p1 = Product.create([title:products[0][:title],description:products[0][:description],quantity:20,price:30,image:open(products[0][:image_path])])
-p2 = Product.create([title:products[1][:title],description:products[1][:description],quantity:20,price:30,image:open(products[1][:image_path])])
+p1 = Product.create([title:products[0][:title],description:products[0][:description],quantity:20,price:10,image:open(products[0][:image_path])])
+p2 = Product.create([title:products[1][:title],description:products[1][:description],quantity:20,price:10,image:open(products[1][:image_path])])
 puts "create products"
 
 # 1_day_product
 products =[{title:"国刚说课",
-	        description: "每天都是新的一天",
+	        description: "一天里的真知灼见",
 	        image_path: "#{Rails.root}/app/assets/images/1_day/guogangshuoke.png"},
 
 	        {title:"说杂志",
-	        description: "每天都是新的一天",
+	        description: "转述“顶级外刊”最有价值的封面文章",
 	        image_path: "#{Rails.root}/app/assets/images/1_day/shuozazhi.jpg"}
 ]
-p1 = Product.create([title:products[0][:title],description:products[0][:description],quantity:20,price:30,image:open(products[0][:image_path])])
-p2 = Product.create([title:products[1][:title],description:products[1][:description],quantity:20,price:30,image:open(products[1][:image_path])])
+p1 = Product.create([title:products[0][:title],description:products[0][:description],quantity:20,price:20,image:open(products[0][:image_path])])
+p2 = Product.create([title:products[1][:title],description:products[1][:description],quantity:20,price:20,image:open(products[1][:image_path])])
 puts "create products"
 
 # 1_week_product
@@ -39,7 +44,7 @@ products =[{title:"刻意练习",
 	        description: "不积跬步无以至千里",
 	        image_path: "#{Rails.root}/app/assets/images/1_week/keyinglianxi.png"},
 
-	        {title:"说杂志",
+	        {title:"人类简史",
 	        description: "一周看懂一本书",
 	        image_path: "#{Rails.root}/app/assets/images/1_week/renleijianshi.png"}
 ]
@@ -56,21 +61,21 @@ products =[{title:"从零开始做产品",
 	        description: "三个月带来新的可能",
 	        image_path: "#{Rails.root}/app/assets/images/3_month/kaizhixuetang_python.png"}
 ]
-p1 = Product.create([title:products[0][:title],description:products[0][:description],quantity:20,price:30,image:open(products[0][:image_path])])
-p2 = Product.create([title:products[1][:title],description:products[1][:description],quantity:20,price:30,image:open(products[1][:image_path])])
+p1 = Product.create([title:products[0][:title],description:products[0][:description],quantity:20,price:1000,image:open(products[0][:image_path])])
+p2 = Product.create([title:products[1][:title],description:products[1][:description],quantity:20,price:1000,image:open(products[1][:image_path])])
 puts "create products"
 
 # 1_year_product
-products =[{title:"得到：槽边往事",
-	        description: "一年又一年，认识新的世界",
-	        image_path: "#{Rails.root}/app/assets/images/1_year/biancaowangshi.png"},
+products =[{title:"李翔商业内刊",
+	        description: "高质量的商业知识服务",
+	        image_path: "#{Rails.root}/app/assets/images/1_year/lixiang.png"},
 
-	        {title:"得到：通往财富自由之路",
-	        description: "一年又一年，认识新的世界",
+	        {title:"李笑来：通往财富自由之路",
+	        description: "一年里，一周更新一个观念，通往财富自由",
 	        image_path: "#{Rails.root}/app/assets/images/1_year/lixiaolai.png"}
 ]
-p1 = Product.create([title:products[0][:title],description:products[0][:description],quantity:20,price:30,image:open(products[0][:image_path])])
-p2 = Product.create([title:products[1][:title],description:products[1][:description],quantity:20,price:30,image:open(products[1][:image_path])])
+p1 = Product.create([title:products[0][:title],description:products[0][:description],quantity:20,price:199,image:open(products[0][:image_path])])
+p2 = Product.create([title:products[1][:title],description:products[1][:description],quantity:20,price:199,image:open(products[1][:image_path])])
 puts "create products"
 
 # 7_year_product
@@ -82,8 +87,8 @@ products =[{title:"新生大学",
 	        description: "成为想要的自己",
 	        image_path: "#{Rails.root}/app/assets/images/7_year/quanzhanying.png"}
 ]
-p1 = Product.create([title:products[0][:title],description:products[0][:description],quantity:20,price:30,image:open(products[0][:image_path])])
-p2 = Product.create([title:products[1][:title],description:products[1][:description],quantity:20,price:30,image:open(products[1][:image_path])])
+p1 = Product.create([title:products[0][:title],description:products[0][:description],quantity:20,price:2777,image:open(products[0][:image_path])])
+p2 = Product.create([title:products[1][:title],description:products[1][:description],quantity:20,price:13000,image:open(products[1][:image_path])])
 puts "create products"
 
 # create_products = for i in 1..40 do
