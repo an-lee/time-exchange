@@ -11,20 +11,40 @@
           <li><a data-toggle="tab" href="#1year">One Year</a></li>
           <li><a data-toggle="tab" href="#7year">Seven Years</a></li>
         </ul>
-        <!-- .nav-tabs-->
-        <!-- tab-content -->
+      <!-- .nav-tabs-->
+
+      <!-- tab-content -->
       <div class="tab-content">
         <div id="all" class="tab-pane fade in active">
-          <div class="content-md col-md-12" style="text-align:center;">
+          <div class="content-md col-md-12">
             <div class="row">
               <% @products.each do |product| %>
-                <div class="col-xs-12 col-md-3" style="margin-bottom: 30px;">
-                  <% if product.image.present? %>
-                    <%= link_to image_tag(product.image.thumb.url),product_path(product) , class:"thumbnail" %>
-                  <% else %>
-                    <%= link_to image_tag("http://placehold.it/200x200&text=No Pic"),product_path(product) , class:"thumbnail" %>
-                  <% end %>
-                <%= product.title %> <span style="color:#ef0568;">  ¥<%= product.price %></span>
+                <div class="col-xs-12 col-md-3">
+                  <div class="shop-item">
+                    <div class="shop-thumbnail">
+                      <% if product.image.present? %>
+                        <%= link_to image_tag(product.image.thumb.url),product_path(product) , class:"thumbnail" %>
+                      <% else %>
+                        <%= link_to image_tag("http://placehold.it/200x200&text=No Pic"),product_path(product) , class:"thumbnail" %>
+                      <% end %>
+                      <div class="shop-item-tools">
+                        <a href="#" class="add-to-whishlist" data-toggle="tooltip" data-placement="top" title="Wishlist">
+                          <i class="fa fa-heart-o"></i>
+                        </a>
+                          <%= link_to add_to_cart_product_path(product), :class=>"add-to-cart", :toggle => "tooltip",  :placement=>"top", :title => "Add to cart", :method => :post do %>
+                            <i class="glyphicon glyphicon-shopping-cart"></i>
+                          <% end %>
+                      </div>
+                    </div>
+                    <div class="shop-item-details">
+                      <div class="shop-item-title">
+                        <%= product.title %>
+                      </div>
+                      <div class="shop-item-price">
+                        <span style="color:#ef0568;">¥<%= product.price %></span>
+                      </div>
+                    </div>
+                  </div>
               </div>
               <% end %>
             </div>
@@ -132,7 +152,6 @@
             </div>
           </div>
           </div>
-
       </div>
         <!-- .tab-content -->
     </div>
