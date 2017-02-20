@@ -47,6 +47,7 @@ class Admin::ProductsController < ApplicationController
     redirect_to admin_products_path
   end
 
+
 private
 
   def product_params

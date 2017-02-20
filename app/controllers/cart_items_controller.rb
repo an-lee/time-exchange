@@ -31,7 +31,7 @@ class CartItemsController < ApplicationController
           elsif @cart_item.quantity == @cart_item.product.quantity
                redirect_to carts_path, alert: "库存不足！"
           end
-     end
+  end
 
   def remove_quantity
       @cart_item = current_cart.cart_items.find_by_product_id(params[:id])
