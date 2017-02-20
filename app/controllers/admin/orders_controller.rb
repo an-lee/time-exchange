@@ -16,7 +16,7 @@ class Admin::OrdersController < ApplicationController
   def ship
     @order = Order.find(params[:id])
     @order.ship!
-    OderMailer.notify_ship(@order).deliver!
+    OrderMailer.notify_ship(@order).deliver!
     redirect_to :back
   end
 
