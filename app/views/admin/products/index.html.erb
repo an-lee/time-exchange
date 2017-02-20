@@ -20,6 +20,7 @@
           <div class="item-title">
             <p>序号：<%= product.id %></p>
             <p>名称：<%= product.title %></p>
+            <p>类别：<%= product.category %></p>
             <p>价格：¥ <%= product.price %></p>
             <p>库存：<%= product.quantity %></p>
           </div>
@@ -30,7 +31,7 @@
           <i class="glyphicon glyphicon-edit remove_shopping_cart"></i>
           <% end %>
       </div>
-      
+
       <div class="row">
         <%= link_to admin_product_path(product), :method => :delete, class: "item-remove" do %>
           <i class="glyphicon glyphicon-trash remove_shopping_cart"></i>
