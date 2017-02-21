@@ -8,16 +8,32 @@
         </div>
         <!-- nav-tabs -->
       <ul class="nav nav-tabs nav-justified">
-          <li class="active"><a data-toggle="all" href="#home">产品</a></li>
-          <li><a data-toggle="tab" href="#1hour">评测</a></li>
-          <li><a data-toggle="tab" href="#1day">讨论</a></li>
+          <li class="active"><a data-toggle="tab" href="#product">产品</a></li>
+          <li><a data-toggle="tab" href="#post">评测</a></li>
+          <li><a data-toggle="tab" href="#comment">讨论</a></li>
         </ul>
       </div>
-      <% if @product.image.present? %>
-        <%= image_tag(@product.image.medium.url, class:"thumbnail") %>
-      <% else %>
-        <%= image_tag("http://placehold.it/400x400&text=No Pic", class:"thumbnail") %>
-      <% end %>
+      <!-- .nav-tabs-->
+
+      <!-- tab-content -->
+      <div class="tab-content content-sm">
+        <div id="product" class="tab-pane fade in active">
+          <div>
+            <% if @product.image.present? %>
+              <%= image_tag(@product.image.medium.url, class:"thumbnail") %>
+            <% else %>
+              <%= image_tag("http://placehold.it/400x400&text=No Pic", class:"thumbnail") %>
+            <% end %>
+          </div>
+        </div>
+        <div id="post" class="tab-pane fade">
+          <p>暂无评测</p>
+        </div>
+        <div id="comment" class="tab-pane fade">
+          <p>暂无讨论</p>
+        </div>
+      </div>
+
     </main>
   </div>
 
