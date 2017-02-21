@@ -1,18 +1,31 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-6">
+  <div class="col-sm-8">
+    <main>
+      <div class="item-details">
+        <div class="item-title">
+          <h2 style="text-align:center;"><%= @product.title %></h2>
+          <p style="text-align:center;"><%= @product.description %></p>
+        </div>
+        <!-- nav-tabs -->
+      <ul class="nav nav-tabs nav-justified">
+          <li class="active"><a data-toggle="all" href="#home">产品</a></li>
+          <li><a data-toggle="tab" href="#1hour">评测</a></li>
+          <li><a data-toggle="tab" href="#1day">讨论</a></li>
+        </ul>
+      </div>
       <% if @product.image.present? %>
         <%= image_tag(@product.image.medium.url, class:"thumbnail") %>
       <% else %>
         <%= image_tag("http://placehold.it/400x400&text=No Pic", class:"thumbnail") %>
       <% end %>
-    </div>
-    <div class="col-md-6">
-      <h2><%= @product.title %></h2>
+    </main>
+  </div>
+
+  <div class="col-md-3 col-md-offset-1 col-sm-4 padding-bottom-2x">
+    <aside>
+
       <div style="height:100px;">
-        <p>
-          <%= @product.description %>
-        </p>
+
       </div>
       <b>
         库存: <%= @product.quantity %>
@@ -20,7 +33,7 @@
       <div class="item-price">
         ¥ <%= @product.price %>
       </div>
-      <div class="pull-right">
+      <div>
         <% if @product.quantity.present? && @product.quantity > 0 %>
           <%= link_to("Add into Cart", add_to_cart_product_path(@product), :method => :post, :class => "btn btn-primary btn-lg btn-danger") %>
         <% else %>
@@ -29,6 +42,7 @@
           </div>
         <% end %>
       </div>
-    </div>
+    </aside>
   </div>
+
 </div>
