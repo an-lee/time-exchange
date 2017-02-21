@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'welcome#index'
 
+  resources :about
+
   namespace :admin do
     resources :products
     resources :orders do
@@ -34,7 +36,7 @@ Rails.application.routes.draw do
       post :remove_quantity
     end
   end
-  
+
   resources :orders do
     member do
       post :pay_with_alipay
