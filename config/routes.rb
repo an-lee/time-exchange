@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :about
   resources :faq
+  resources :reviews
 
   namespace :admin do
     resources :products
