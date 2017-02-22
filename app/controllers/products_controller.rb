@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-    @posts = @product.posts.order("created_at DESC")
+    @posts = @product.posts.recent
   end
 
   def add_to_cart
