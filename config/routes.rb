@@ -51,5 +51,6 @@ Rails.application.routes.draw do
   namespace :account do
     resources :orders
     resources :posts
+    resources :reviews
   end
 end
