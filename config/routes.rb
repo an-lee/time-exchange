@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       post :add_to_cart
     end
     resources :posts
+    resources :reviews
   end
 
   resources :carts do
