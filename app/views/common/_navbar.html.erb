@@ -118,6 +118,12 @@
             <li>
               <%= link_to("我的订单", account_orders_path, class:"sub-menu") %>
             </li>
+            <li>
+              <%= link_to("我的讨论", account_posts_path, class:"sub-menu") %>
+            </li>
+            <li>
+              <%= link_to("我的评测", account_reviews_path, class:"sub-menu") %>
+            </li>
             <li class="dropdown-divider"></li>
             <li>
               <%= link_to("登出", destroy_user_session_path, class:'sub-menu', method: :delete ) %>

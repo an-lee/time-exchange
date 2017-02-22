@@ -1,0 +1,28 @@
+<div class="col-md-12">
+
+  <h2 class="text-center"> 我发表过的讨论 </h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th> Content </th>
+        <th> Product Name </th>
+        <th> Last Update </th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td> <%= post.content %> </td>
+          <!-- <td> <%= post.product.title %> </td> -->
+          <td> <%= link_to(post.product.title, product_path(post.product, post)) %></td>
+          <td> <%= post.updated_at %> </td>
+          <td> <%= link_to('Edit', edit_product_post_path(post.product, post), class: "btn btn-default btn-xs") %></td>
+          <td> <%= link_to('Delete', product_post_path(post.product, post), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default btn-xs") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

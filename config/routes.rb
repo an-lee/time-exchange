@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :about
   resources :faq
+  resources :reviews
 
   namespace :admin do
     resources :products
@@ -22,6 +23,8 @@ Rails.application.routes.draw do
     member do
       post :add_to_cart
     end
+    resources :posts
+    resources :reviews
   end
 
   resources :carts do
@@ -48,5 +51,7 @@ Rails.application.routes.draw do
 
   namespace :account do
     resources :orders
+    resources :posts
+    resources :reviews
   end
 end

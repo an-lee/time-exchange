@@ -1,0 +1,27 @@
+<div class="col-md-12">
+
+  <h2 class="text-center"> 我发表过的评测 </h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th> Title </th>
+        <th> Product Name </th>
+        <th> Last Update </th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @reviews.each do |review| %>
+        <tr>
+          <td> <%= review.title %> </td>
+          <td> <%= link_to(review.product.title, product_path(review.product, review)) %></td>
+          <td> <%= review.updated_at %> </td>
+          <td> <%= link_to('Edit', edit_product_review_path(review.product, review), class: "btn btn-default btn-xs") %></td>
+          <td> <%= link_to('Delete', product_review_path(review.product, review), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default btn-xs") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
