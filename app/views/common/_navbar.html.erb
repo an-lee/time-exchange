@@ -38,13 +38,13 @@
 
             <!-- FQA -->
             <li class="nav-item">
-                <%= link_to("常见问题", root_path, class:"nav-item-child") %>
+                <%= link_to("常见问题", faq_index_path, class:"nav-item-child") %>
             </li>
             <!-- End FQA -->
 
             <!-- Contact -->
             <li class="nav-item">
-              <%= link_to("联系我们", root_path, class:"nav-item-child") %>
+              <%= link_to("关于我们", about_index_path, class:"nav-item-child") %>
             </li>
             <!-- End Contact -->
 
@@ -104,10 +104,10 @@
           <ul class="dropdown-menu dropdown-menu-right">
             <% if !current_user %>
             <li>
-              <%= link_to("注册", new_user_registration_path, class:"sub-menu") %>
+              <a href="#" class="sub-menu" data-toggle="modal" data-target="#signup-modal">注册</a>
             </li>
             <li>
-              <%= link_to("登录", new_user_session_path, class:"sub-menu") %>
+              <a href="#" class="sub-menu" data-toggle="modal" data-target="#login-modal">登入</a>
             </li>
             <% else %>
             <% if current_user.admin? %>
@@ -134,3 +134,40 @@
   </nav>
     <!-- Navbar -->
 </header>
+
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog" role="document">
+    <div class="loginmodal-container">
+       <h2>Log in</h2>
+       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+         <div class="form-inputs">
+           <%= f.input :email, required: false, autofocus: true %>
+           <%= f.input :password, required: false %>
+           <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+         </div>
+         <div class="form-actions">
+           <%= f.button :submit, "Log in" %>
+         </div>
+       <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="signup-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="loginmodal-container">
+      <h2>Sign up</h2>
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= f.error_notification %>
+        <div class="form-inputs">
+          <%= f.input :email, required: true, autofocus: true %>
+          <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+          <%= f.input :password_confirmation, required: true %>
+        </div>
+        <div class="form-actions">
+            <%= f.button :submit, "Sign up" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
