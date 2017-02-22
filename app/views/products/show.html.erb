@@ -30,7 +30,7 @@
           <p>暂无评测</p>
         </div>
         <div id="comment" class="tab-pane fade">
-          <p>暂无讨论</p>
+          <%= link_to("Write a Post", new_product_post_path(@product), class: "btn btn-default pull-right")%>
         </div>
       </div>
 
