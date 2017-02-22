@@ -451,13 +451,13 @@
  }
 
  body {
-   font-family: Hind, sans-serif;
+   font-family: Verdana,"Helvetica Neue",Helvetica, "Nimbus Sans L", Arial, "Liberation Sans", "PingFang SC", "Hiragino Sans GB", "Source Han Sans CN", "Source Han Sans SC", "Microsoft YaHei", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti", SimHei, "WenQuanYi Zen Hei Sharp", sans-serif;
  }
 
  p {
    font-size: 15px;
    font-weight: 400;
-   font-family: Hind, sans-serif;
+   font-family: Verdana,"Helvetica Neue",Helvetica, "Nimbus Sans L", Arial, "Liberation Sans", "PingFang SC", "Hiragino Sans GB", "Source Han Sans CN", "Source Han Sans SC", "Microsoft YaHei", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti", SimHei, "WenQuanYi Zen Hei Sharp", sans-serif;
    color: #a6a7aa;
    line-height: 1.4;
    margin-bottom: 15px;
@@ -510,7 +510,7 @@
 
  h1, h2, h3, h4, h5, h6 {
    font-weight: 700;
-   font-family: Hind, sans-serif;
+   font-family: Verdana,"Helvetica Neue",Helvetica, "Nimbus Sans L", Arial, "Liberation Sans", "PingFang SC", "Hiragino Sans GB", "Source Han Sans CN", "Source Han Sans SC", "Microsoft YaHei", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti", SimHei, "WenQuanYi Zen Hei Sharp", sans-serif;
    color: #515769;
    line-height: 1.4;
    margin: 0 0 15px;
@@ -1791,23 +1791,23 @@
    	[Content]
  ------------------------------------------------------------------*/
  .content {
-   padding-top: 40px;
-   padding-bottom: 40px;
+   padding-top: 30px;
+   padding-bottom: 30px;
  }
 
  .content-sm {
+   padding-top: 50px;
+   padding-bottom: 50px;
+ }
+
+ .content-md {
    padding-top: 60px;
    padding-bottom: 60px;
  }
 
- .content-md {
+ .content-lg {
    padding-top: 80px;
    padding-bottom: 80px;
- }
-
- .content-lg {
-   padding-top: 100px;
-   padding-bottom: 100px;
  }
 
  /*------------------------------------------------------------------
