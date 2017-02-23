@@ -2,7 +2,7 @@
   <hr>
   <h2><%= @review.title %></h2>
   <hr>
-  <p><%= @review.body %></p>
+  <p><%= markdown(@review.body) %></p>
   <hr>
   <div class="group">
     <%= link_to('Back', url_for(:back), class: "btn btn-primary") %>
