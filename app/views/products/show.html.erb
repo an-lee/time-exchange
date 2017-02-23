@@ -42,6 +42,10 @@
                   <td><%= link_to(review.title, product_review_path(review.product, review)) %>
                   <td><%= review.user.email %></td>
                   <td><%= review.created_at %></td>
+                  <% if current_user && current_user == review.user %>
+                    <td><%= link_to('Edit', edit_product_review_path(review.product, review), class: "btn btn-default btn-xs") %></td>
+                    <td><%= link_to('Delete', product_review_path(review.product, review), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default btn-xs") %></td>
+                  <% end %>
                 </tr>
               <% end %>
             </tbody>
@@ -66,6 +70,10 @@
                   <td><%= post.content %></td>
                   <td><%= post.user.email %></td>
                   <td><%= post.created_at %></td>
+                  <% if current_user && current_user == post.user %>
+                    <td><%= link_to('Edit', edit_product_post_path(post.product, post), class: "btn btn-default btn-xs") %></td>
+                    <td> <%= link_to('Delete', product_post_path(post.product, post), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default btn-xs") %></td>
+                  <% end %>
                 </tr>
               <% end %>
             </tbody>

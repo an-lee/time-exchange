@@ -7,7 +7,9 @@ class ReviewsController < ApplicationController
   end
 
   def show
+    @product = Product.find(params[:product_id])
     @review = Review.find(params[:id])
+
   end
 
   def new
@@ -21,9 +23,15 @@ class ReviewsController < ApplicationController
   end
 
   def update
+    @product = Product.find(params[:product_id])
     @review = Review.find(params[:id])
     if @review.update(review_params)
-      redirect_to account_reviews_path, notice: "Update Success"
+      url = request.referer
+      if url.include?("/account")
+        redirect_to account_reviews_path, notice: "Update Success"
+      else
+        redirect_to product_path(@product), notice: "Update Success"
+      end
     else
       render :edit
     end
@@ -43,15 +51,22 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
+    @product = Product.find(params[:product_id])
     @review = Review.find(params[:id])
     @review.destroy
-    redirect_to account_reviews_path, alert: "Post deleted!"
+    url = request.referer
+    if url.include?("/account")
+      redirect_to account_reviews_path, alert: "Review deleted!"
+    else
+      redirect_to product_path(@product), alert: "Review deleted!"
+    end
+
   end
 
   private
 
   def review_params
-    params.require(:review).permit(:title)
+    params.require(:review).permit(:title, :body)
   end
 
 end
