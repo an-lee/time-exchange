@@ -27,30 +27,22 @@
           </div>
         </div>
         <div id="review" class="tab-pane fade">
-          <!-- <p>暂无评测</p> -->
-          <table class="table">
-            <thead>
-              <tr>
-                <th>评测标题</th>
-                <th>发表者</th>
-                <th>发表时间</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @reviews.each do |review| %>
-                <tr>
-                  <td><%= link_to(review.title, product_review_path(review.product, review)) %>
-                  <td><%= review.user.email %></td>
-                  <td><%= review.created_at %></td>
-                  <% if current_user && current_user == review.user %>
-                    <td><%= link_to('Edit', edit_product_review_path(review.product, review), class: "btn btn-default btn-xs") %></td>
-                    <td><%= link_to('Delete', product_review_path(review.product, review), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default btn-xs") %></td>
-                  <% end %>
-                </tr>
+          <%= link_to("Write a Post", new_product_post_path(@product), class: "btn btn-primary")%>
+          <div class="review">
+            <% @reviews.each do |review| %>
+              <h1><%= link_to(review.title, product_review_path(review.product, review)) %></h1>
+              <p>评测人：<%= review.user.email %></p>
+              <p>发表时间：<%= review.created_at %></p>
+              <hr>
+              <p><%= markdown(review.body) %></p>
+
+              <% if current_user && current_user == review.user %>
+                <%= link_to('Edit', edit_product_review_path(review.product, review), class: "btn btn-default btn-xs pull-right") %>
+                <%= link_to('Delete', product_review_path(review.product, review), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default btn-xs pull-right") %>
               <% end %>
-            </tbody>
-          </table>
-          <%= link_to("Write a Review", new_product_review_path(@product), class: "btn btn-default pull-right")%>
+            <% end %>
+          </div>
+          <!-- <p>暂无评测</p> -->
           <div class="text-center">
             <%= will_paginate @reviews %>
           </div>
@@ -78,7 +70,7 @@
               <% end %>
             </tbody>
           </table>
-          <%= link_to("Write a Post", new_product_post_path(@product), class: "btn btn-default pull-right")%>
+
           <div class="text-center">
             <%= will_paginate @posts %>
           </div>
