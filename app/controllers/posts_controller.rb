@@ -13,9 +13,15 @@ class PostsController < ApplicationController
   end
 
   def update
+    @product = Product.find(params[:product_id])
     @post = Post.find(params[:id])
     if @post.update(post_params)
-      redirect_to account_posts_path, notice: "Update Success"
+      url = request.referer
+      if url.include?("/account")
+        redirect_to account_posts_path, notice: "Update Success"
+      else
+        redirect_to product_path(@product), notice: "Update Success"
+      end
     else
       render :edit
     end
@@ -36,9 +42,16 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    @product = Product.find(params[:product_id])
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to account_posts_path, alert: "Post deleted!"
+    url = request.referer
+    if url.include?("/account")
+      redirect_to account_posts_path, alert: "Post deleted!"
+    else
+      redirect_to product_path(@product), alert: "Post deleted!"
+    end
+
   end
 
   private
