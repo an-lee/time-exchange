@@ -107,6 +107,19 @@ p1 = Product.create([title:products[0][:title],description:products[0][:descript
 p2 = Product.create([title:products[1][:title],description:products[1][:description],category:products[1][:category],quantity:20,price:10,image:open(products[1][:image_path])])
 puts "create products"
 
+# reviews = [product_id: 1,
+# 	title: "My Second Post",
+# 	created_at: Time.now,
+# 	body:
+# 	%Q{### My List of Things To Do! Here is the list of things I wish to do!
+# 		* write more posts
+# 		* write even more posts
+# 		* write even more posts!}
+# ]
+# r1 = Review.create([title:reviews[0][:title],created_at:reviews[0][:created_at],body:reviews[0][:body]])
+
+
+
 
 # create_products = for i in 1..40 do
 # groups_test = products[rand(0..7)]
