@@ -14,7 +14,7 @@
   <tbody>
     <% @reviews.each do |review| %>
       <tr>
-        <td> <%= review.id %> </td>
+        <td>   <%= render_review_status(review) %> <%= review.id %> </td>
         <td> <%= link_to(review.title, product_review_path(review.product, review)) %></td>
         <td> <%= link_to(review.product.title, product_path(review.product, review)) %></td>
         <td> <%= review.user.email %> </td>
@@ -27,6 +27,14 @@
             <%= link_to product_review_path(review.product, review), :method => :delete, data: { confirm: "Are you sure?" }, class: "item-remove" do %>
             <i class="glyphicon glyphicon-trash remove_shopping_cart"></i>
             <% end %>
+
+
+            <% if review.is_hidden %>
+              <%= link_to("Publish", publish_admin_review_path(review) , :method => :post, :class => "btn btn-xs btn-default") %>
+            <% else %>
+              <%= link_to("Hide", hide_admin_review_path(review), :method => :post,  :class => "btn btn-xs btn-default") %>
+            <% end %>
+
           <% end %>
        </td>
        <td> <%= review.created_at.to_s(:long) %> </td>

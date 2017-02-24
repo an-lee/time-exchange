@@ -18,7 +18,7 @@
 
       <div class="item-details">
           <div class="item-title">
-            <p>序号：<%= product.id %></p>
+            <p>序号：<%= product.id %>  <%= render_product_status(product) %></p>
             <p>名称：<%= product.title %></p>
             <p>类别：<%= product.category %></p>
             <p>价格：¥ <%= product.price %></p>

@@ -22,7 +22,12 @@ Rails.application.routes.draw do
         post :return
       end
     end
-    resources :reviews
+    resources :reviews do
+      member do
+        post :publish
+        post :hide
+      end
+    end
   end
 
   resources :products do

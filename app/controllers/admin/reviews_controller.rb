@@ -10,7 +10,24 @@ class Admin::ReviewsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-    # @product_lists = @order.product_lists
+  end
+
+  def publish
+    @review = Review.find(params[:id])
+    @review.publish!
+    redirect_to :back
+  end
+
+  def hide
+    @review = Review.find(params[:id])
+    @review.hide!
+    redirect_to :back
+  end
+
+  private
+
+  def review_params
+    params.require(:review).permit(:title, :body, :is_hidden)
   end
 
 end

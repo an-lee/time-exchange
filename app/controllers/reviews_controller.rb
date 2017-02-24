@@ -4,12 +4,16 @@ class ReviewsController < ApplicationController
 
   def index
     @reviews = Review.all
+    @reviews_a = Review.where(:is_hidden => false)
   end
 
   def show
     @product = Product.find(params[:product_id])
     @review = Review.find(params[:id])
-
+    # if @review.is_hidden
+    #   flash[:warning] = "This review already archieved"
+    #   redirect_to root_path
+    # end
   end
 
   def new
@@ -60,13 +64,12 @@ class ReviewsController < ApplicationController
     else
       redirect_to product_path(@product), alert: "Review deleted!"
     end
-
   end
 
   private
 
   def review_params
-    params.require(:review).permit(:title, :body)
+    params.require(:review).permit(:title, :body, :is_hidden)
   end
 
 end
