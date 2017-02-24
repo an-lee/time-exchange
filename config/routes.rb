@@ -8,13 +8,24 @@ Rails.application.routes.draw do
   resources :reviews
 
   namespace :admin do
-    resources :products
+    resources :products do
+      member do
+        post :publish
+        post :hide
+      end
+    end
     resources :orders do
       member do
         post :cancel
         post :ship
         post :shipped
         post :return
+      end
+    end
+    resources :reviews do
+      member do
+        post :publish
+        post :hide
       end
     end
   end
