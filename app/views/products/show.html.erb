@@ -27,7 +27,7 @@
           </div>
         </div>
         <div id="review" class="tab-pane fade">
-          <%= link_to("Write a Post", new_product_post_path(@product), class: "btn btn-primary")%>
+          <%= link_to("Write a Review", new_product_review_path(@product), class: "btn btn-primary")%>
           <div class="review">
             <% @reviews.each do |review| %>
               <h1><%= link_to(review.title, product_review_path(review.product, review)) %></h1>
@@ -35,7 +35,6 @@
               <p>发表时间：<%= review.created_at %></p>
               <hr>
               <p><%= markdown(review.body) %></p>
-
               <% if current_user && current_user == review.user %>
                 <%= link_to('Edit', edit_product_review_path(review.product, review), class: "btn btn-default btn-xs pull-right") %>
                 <%= link_to('Delete', product_review_path(review.product, review), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default btn-xs pull-right") %>
@@ -48,6 +47,7 @@
           </div>
         </div>
         <div id="post" class="tab-pane fade">
+          <%= link_to("Write a Post", new_product_post_path(@product), class: "btn btn-primary")%>
           <table class="table">
             <thead>
               <tr>
