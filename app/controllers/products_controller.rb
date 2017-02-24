@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.all
+    @products = Product.where(:is_hidden => false)
     @products_a = Product.where(:category => '1_hour')
     @products_b = Product.where(:category => '1_day')
     @products_c = Product.where(:category => '1_week')
