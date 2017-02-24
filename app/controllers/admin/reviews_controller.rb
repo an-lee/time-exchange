@@ -7,5 +7,10 @@ class Admin::ReviewsController < ApplicationController
   def index
     @reviews = Review.order("id DESC")
   end
-  
+
+  def show
+    @product = Product.find(params[:id])
+    # @product_lists = @order.product_lists
+  end
+
 end
