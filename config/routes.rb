@@ -22,6 +22,7 @@ Rails.application.routes.draw do
         post :return
       end
     end
+    resources :reviews
   end
 
   resources :products do
