@@ -6,6 +6,7 @@ class RaterController < ApplicationController
       obj.rate params[:score].to_f, current_user, params[:dimension]
 
       render :json => true
+      redirect_to product_path(@product)
     else
       render :json => false
     end
