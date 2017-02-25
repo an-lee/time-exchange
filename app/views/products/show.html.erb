@@ -1,108 +1,170 @@
-<div class="container">
-  <div class="col-sm-8">
-    <main>
-      <div class="item-details">
-        <div class="item-title">
-          <h2 style="text-align:center;"><%= @product.title %></h2>
-          <p style="text-align:center;"><%= @product.description %></p>
+<div class="bg-color-sky-light">
+  <div class="container content">
+    <div class="col-md-9 col-sm-8">
+      <main class="thing_details">
+        <div>
+          <div class="item-title">
+            <h2 style="text-align:center;"><%= @product.title %></h2>
+            <p style="text-align:center;"><%= @product.description %></p>
+          </div>
+          <!-- nav-tabs -->
+        <ul class="nav nav-tabs nav-justified">
+            <li class="active"><a data-toggle="tab" href="#product">产品</a></li>
+            <li><a data-toggle="tab" href="#review">评测</a></li>
+            <li><a data-toggle="tab" href="#post">讨论</a></li>
+          </ul>
         </div>
-        <!-- nav-tabs -->
-      <ul class="nav nav-tabs nav-justified">
-          <li class="active"><a data-toggle="tab" href="#product">产品</a></li>
-          <li><a data-toggle="tab" href="#review">评测</a></li>
-          <li><a data-toggle="tab" href="#post">讨论</a></li>
-        </ul>
-      </div>
-      <!-- .nav-tabs-->
+        <!-- .nav-tabs-->
 
-      <!-- tab-content -->
-      <div class="tab-content content-sm">
-        <div id="product" class="tab-pane fade in active">
-          <div>
-            <% if @product.image.present? %>
-              <%= image_tag(@product.image.medium.url, class:"thumbnail") %>
-            <% else %>
-              <%= image_tag("http://placehold.it/400x400&text=No Pic", class:"thumbnail") %>
-            <% end %>
-          </div>
-        </div>
-        <div id="review" class="tab-pane fade">
-          <%= link_to("Write a Review", new_product_review_path(@product), class: "btn btn-primary")%>
-          <div class="review">
-            <% @reviews.each do |review| %>
-              <h1><%= link_to(review.title, product_review_path(review.product, review)) %></h1>
-              <p>评测人：<%= review.user.email %></p>
-              <p>发表时间：<%= review.created_at %></p>
-              <hr>
-              <p><%= markdown(review.body) %></p>
-              <% if current_user && current_user == review.user %>
-                <%= link_to('Edit', edit_product_review_path(review.product, review), class: "btn btn-default btn-xs pull-right") %>
-                <%= link_to('Delete', product_review_path(review.product, review), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default btn-xs pull-right") %>
-              <% end %>
-            <% end %>
-          </div>
-          <!-- <p>暂无评测</p> -->
-          <div class="text-center">
-            <%= will_paginate @reviews %>
-          </div>
-        </div>
-        <div id="post" class="tab-pane fade">
-          <%= link_to("Write a Post", new_product_post_path(@product), class: "btn btn-primary")%>
-          <table class="table">
-            <thead>
-              <tr>
-                <th>文章内容</th>
-                <th>发表者</th>
-                <th>发表时间</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @posts.each do |post| %>
-                <tr>
-                  <td><%= post.content %></td>
-                  <td><%= post.user.email %></td>
-                  <td><%= post.created_at %></td>
-                  <% if current_user && current_user == post.user %>
-                    <td><%= link_to('Edit', edit_product_post_path(post.product, post), class: "btn btn-default btn-xs") %></td>
-                    <td> <%= link_to('Delete', product_post_path(post.product, post), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default btn-xs") %></td>
+        <!-- tab-content -->
+        <div class="tab-content content-sm thing_content">
+          <div id="product" class="tab-pane fade in active">
+            <div id="productCarousel" class="carousel slide" data-ride="carousel">
+
+              <!-- Indicators -->
+              <ol class="carousel-indicators">
+                <li data-target="#productCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#productCarousel" data-slide-to="1"></li>
+                <li data-target="#productCarousel" data-slide-to="1"></li>
+              </ol>
+
+              <!-- Wrapper for slides -->
+              <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                  <% if @product.image.present? %>
+                    <%= image_tag(@product.image.medium.url, class:"thumbnail") %>
+                  <% else %>
+                    <%= image_tag("http://placehold.it/400x400&text=敬请期待", class:"thumbnail") %>
                   <% end %>
-                </tr>
+                </div>
+                <div class="item">
+                  <%= image_tag("http://placehold.it/400x400&text=敬请期待", class:"thumbnail") %>
+                </div>
+                <div class="item">
+                  <%= image_tag("http://placehold.it/400x400&text=敬请期待", class:"thumbnail") %>
+                </div>
+              </div>
+
+
+            </div>
+
+          </div><!-- product id -->
+          <div id="review" class="tab-pane fade">
+            <%= link_to("Write a Review", new_product_review_path(@product), class: "btn btn-primary")%>
+            <div class="review">
+              <article class="article">
+                <% if @reviews.present? %>
+                  <% @reviews.each do |review| %>
+                  <div class="clearfix" >
+                    <p>评测人：<%= review.user.email %></p>
+                    <p>发表时间：<%= review.created_at %></p>
+                    <p><%= link_to(review.title, product_review_path(review.product, review)) %></p>
+                  </div>
+                  <hr>
+                  <p><%= markdown(review.body) %></p>
+                  <% if current_user && current_user == review.user %>
+                    <%= link_to('Edit', edit_product_review_path(review.product, review), class: "btn btn-default btn-xs pull-right") %>
+                    <%= link_to('Delete', product_review_path(review.product, review), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default btn-xs pull-right") %>
+                  <% end %>
+                  <% end %>
+                  <% else %>
+                    <p>暂无评测，快来添加吧</p>
+                <% end %>
+              </article>
+            </div>
+
+            <div class="text-center">
+              <%= will_paginate @reviews %>
+            </div>
+          </div>
+          <div id="post" class="tab-pane fade">
+            <div class="panel panel-white post panel-shadow">
+              <% if @posts.present? %>
+                <% @posts.each do |post| %>
+                  <div class="post-heading">
+                    <div class="pull-left image">
+                        <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
+                    </div>
+                    <div class="pull-left meta">
+                        <div class="title h5">
+                            <b><%= post.user.email %></b>
+                            说
+                        </div>
+                        <h6 class="text-muted time"><%= post.created_at %></h6>
+                    </div>
+                </div><!-- post-heading -->
+
+                  <div class="post-description">
+                    <p><%= post.content %></p>
+                    <div class="stats">
+                        <a href="#" class="btn btn-default stat-item">
+                            <i class="fa fa-thumbs-up icon"></i>2
+                        </a>
+                        <a href="#" class="btn btn-default stat-item">
+                            <i class="fa fa-share icon"></i>12
+                        </a>
+                        <% if current_user && current_user == post.user %>
+                          <%= link_to('编辑', edit_product_post_path(post.product, post), class: "btn btn-default btn-xs") %>
+                          <%= link_to('删除', product_post_path(post.product, post), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default btn-xs") %>
+                        <% end %>
+
+                    </div>
+                </div><!-- post-description -->
+                <% end %>
+
+                <div class="post-footer">
+                  <div class="input-group">
+                      <input class="form-control" placeholder="Add a comment" type="text">
+                      <span class="input-group-addon">
+                        <%= link_to new_product_post_path(@product) do %>
+                          <i class="fa fa-edit"></i>
+                        <% end %>
+                      </span>
+                    </input>
+                  </div>
+              </div>
+              <% else %>
+                <p>暂无讨论，快来说几句
+                <%= link_to new_product_post_path(@product) do %>
+                  <i class="fa fa-edit"></i>
+                <% end %>
+                </p>
               <% end %>
-            </tbody>
-          </table>
+            </div><!-- panel -->
 
-          <div class="text-center">
-            <%= will_paginate @posts %>
-          </div>
+            <div class="text-center">
+              <%= will_paginate @posts %>
+            </div>
+
+          </div><!-- post id -->
+
+        </div> <!-- tab-content -->
+      </main>
+
+    </div>
+
+    <div class="col-md-3 col-sm-4">
+      <aside class="shop_sidebar">
+        <div class="item-price">
+          <h2>¥ <%= @product.price %></h2>
         </div>
-
-      </div>
-
-    </main>
-  </div>
-
-  <div class="col-md-3 col-md-offset-1 col-sm-4 padding-bottom-2x">
-    <aside>
-
-      <div style="height:100px;">
-
-      </div>
-      <b>
-        库存: <%= @product.quantity %>
-      </b>
-      <div class="item-price">
-        ¥ <%= @product.price %>
-      </div>
-      <div>
-        <% if @product.quantity.present? && @product.quantity > 0 %>
-          <%= link_to("Add into Cart", add_to_cart_product_path(@product), :method => :post, :class => "btn btn-primary btn-lg btn-danger") %>
+        <% if @product.quantity.present? && @product.quantity > 5 %>
+          <p>库存充足，请放心购买</p>
         <% else %>
-          <div class="btn btn-danger">
-            Sold Out
-          </div>
+          <p>仅剩 <%= @product.quantity %> 件，欲购从速</p>
         <% end %>
-      </div>
-    </aside>
-  </div>
+        <div>
+          <% if @product.quantity.present? && @product.quantity > 0 %>
+            <%= link_to("添加到购物车", add_to_cart_product_path(@product), :method => :post, :class => "btn btn-primary btn-lg btn-danger") %>
+          <% else %>
+            <div class="btn btn-primary btn-danger">
+              Sold Out
+            </div>
+          <% end %>
+        </div>
+      </aside>
 
+    </div>
+
+  </div>
 </div>
