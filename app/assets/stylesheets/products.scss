@@ -5,6 +5,8 @@
 
 /* post */
 
+
+
 .panel-shadow {
     box-shadow: rgba(0, 0, 0, 0.3) 7px 7px 7px;
 }
@@ -64,10 +66,7 @@
 .post .post-description .stats .stat-item .icon {
   margin-right: 8px;
 }
-.post .post-footer {
-  border-top: 1px solid #ddd;
-  padding: 15px;
-}
+
 .post .post-footer .input-group-addon a {
   color: #454545;
 }
@@ -153,7 +152,6 @@
   background-color: #fff;
   display: block;
   padding: 2em 3em;
-  border-radius: 1.5em;
   margin-bottom: 2em;
 }
 
@@ -165,12 +163,15 @@
   background-color: #fff;
   display: block;
   padding: 2em 3em;
-  border-radius: 1.5em;
   margin-bottom: 2em;
 }
 
-.review h2 {
-  text-align: center;
+.article {
+  background-color: #fafafa;
+  display: block;
+  padding: 2em 3em;
+  border-radius: 1.5em;
+  margin-bottom: 2em;
 }
 
 .thing_content {

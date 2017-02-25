@@ -50,27 +50,56 @@
 
           </div><!-- product id -->
           <div id="review" class="tab-pane fade">
-            <%= link_to("Write a Review", new_product_review_path(@product), class: "btn btn-primary")%>
             <div class="review">
-              <article class="article">
+              <div class="panel panel-white post panel-shadow">
                 <% if @reviews.present? %>
+                  <%= link_to("Write a Review", new_product_review_path(@product), class: "btn btn-primary")%>
                   <% @reviews.each do |review| %>
-                  <div class="clearfix" >
-                    <p>评测人：<%= review.user.email %></p>
-                    <p>发表时间：<%= review.created_at %></p>
-                    <p><%= link_to(review.title, product_review_path(review.product, review)) %></p>
-                  </div>
-                  <hr>
-                  <p><%= markdown(review.body) %></p>
+                  <div class="post-heading">
+                    <div class="pull-left image">
+                        <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
+                    </div>
+                    <div class="pull-left meta">
+                        <div class="title h5">
+                            <b>
+                              <%= review.user.email %> 发表《 <%= link_to(review.title, product_review_path(review.product, review)) %>》</b>
+                        </div>
+                        <h6 class="text-muted time"><%= review.created_at %></h6>
+                    </div>
+                </div><!-- post-heading -->
+
+                <div class="article">
+
+                  <% if review.body.length > 250 %>
+                    <%= truncate(review.body, length:250) %>
+                    <%= link_to '...Read more', '', class: "read-more-#{review.id}" %>
+                    <script>
+                      $('.read-more-<%= review.id %>').on('click', function(e) {
+                        e.preventDefault()
+                        $(this).parent().html('<%= escape_javascript markdown(review.body) %>')
+                      })
+                    </script>
+                  <% else %>
+                    <p><%= markdown(review.body) %></p>
+                  <% end %>
+
+                </div>
+
                   <% if current_user && current_user == review.user %>
                     <%= link_to('Edit', edit_product_review_path(review.product, review), class: "btn btn-default btn-xs pull-right") %>
                     <%= link_to('Delete', product_review_path(review.product, review), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default btn-xs pull-right") %>
                   <% end %>
+
+                <% end %><!-- @reviews.each do -->
+
+              <% else %><!-- @reviews don't present -->
+                <p>暂无评测，快来添加吧
+                  <%= link_to new_product_review_path(@product) do %>
+                    <i class="fa fa-edit"></i>
                   <% end %>
-                  <% else %>
-                    <p>暂无评测，快来添加吧</p>
-                <% end %>
-              </article>
+                </p>
+              <% end %>
+              </div>
             </div>
 
             <div class="text-center">
@@ -78,63 +107,68 @@
             </div>
           </div>
           <div id="post" class="tab-pane fade">
-            <div class="panel panel-white post panel-shadow">
-              <% if @posts.present? %>
-                <% @posts.each do |post| %>
-                  <div class="post-heading">
-                    <div class="pull-left image">
-                        <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
-                    </div>
-                    <div class="pull-left meta">
-                        <div class="title h5">
-                            <b><%= post.user.email %></b>
-                            说
-                        </div>
-                        <h6 class="text-muted time"><%= post.created_at %></h6>
-                    </div>
-                </div><!-- post-heading -->
+            <div class="comment">
+              <div class="panel panel-white post panel-shadow">
+                <% if @posts.present? %>
+                  <% @posts.each do |post| %>
+                    <div class="post-heading">
+                      <div class="pull-left image">
+                          <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
+                      </div>
+                      <div class="pull-left meta">
+                          <div class="title h5">
+                              <b><%= post.user.email %></b>
+                              说
+                          </div>
+                          <h6 class="text-muted time"><%= post.created_at %></h6>
+                      </div>
+                  </div><!-- post-heading -->
 
-                  <div class="post-description">
-                    <p><%= post.content %></p>
-                    <div class="stats">
-                        <a href="#" class="btn btn-default stat-item">
-                            <i class="fa fa-thumbs-up icon"></i>2
-                        </a>
-                        <a href="#" class="btn btn-default stat-item">
-                            <i class="fa fa-share icon"></i>12
-                        </a>
-                        <% if current_user && current_user == post.user %>
-                          <%= link_to('编辑', edit_product_post_path(post.product, post), class: "btn btn-default btn-xs") %>
-                          <%= link_to('删除', product_post_path(post.product, post), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default btn-xs") %>
-                        <% end %>
+                    <div class="post-description">
+                      <div class="article">
+                        <p><%= post.content %></p>
+                      </div>
+                      <div class="stats">
+                          <a href="#" class="btn btn-default stat-item">
+                              <i class="fa fa-thumbs-up icon"></i>2
+                          </a>
+                          <a href="#" class="btn btn-default stat-item">
+                              <i class="fa fa-share icon"></i>12
+                          </a>
+                          <% if current_user && current_user == post.user %>
+                            <%= link_to('编辑', edit_product_post_path(post.product, post), class: "btn btn-default btn-xs") %>
+                            <%= link_to('删除', product_post_path(post.product, post), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default btn-xs") %>
+                          <% end %>
 
+                      </div>
+                  </div><!-- post-description -->
+                  <% end %>
+
+                  <div class="post-footer">
+                    <div class="input-group">
+                        <input class="form-control" placeholder="Add a comment" type="text">
+                        <span class="input-group-addon">
+                          <%= link_to new_product_post_path(@product) do %>
+                            <i class="fa fa-edit"></i>
+                          <% end %>
+                        </span>
+                      </input>
                     </div>
-                </div><!-- post-description -->
+                </div>
+                <% else %>
+                  <p>暂无讨论，快来说几句
+                  <%= link_to new_product_post_path(@product) do %>
+                    <i class="fa fa-edit"></i>
+                  <% end %>
+                  </p>
                 <% end %>
+              </div><!-- panel -->
 
-                <div class="post-footer">
-                  <div class="input-group">
-                      <input class="form-control" placeholder="Add a comment" type="text">
-                      <span class="input-group-addon">
-                        <%= link_to new_product_post_path(@product) do %>
-                          <i class="fa fa-edit"></i>
-                        <% end %>
-                      </span>
-                    </input>
-                  </div>
+              <div class="text-center">
+                <%= will_paginate @posts %>
               </div>
-              <% else %>
-                <p>暂无讨论，快来说几句
-                <%= link_to new_product_post_path(@product) do %>
-                  <i class="fa fa-edit"></i>
-                <% end %>
-                </p>
-              <% end %>
-            </div><!-- panel -->
 
-            <div class="text-center">
-              <%= will_paginate @posts %>
-            </div>
+            </div> <!-- comment -->
 
           </div><!-- post id -->
 
