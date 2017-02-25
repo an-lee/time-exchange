@@ -13,4 +13,6 @@ class Product < ApplicationRecord
     self.save
   end
 
+  ratyrate_rateable 'visual_effects'
+
 end
