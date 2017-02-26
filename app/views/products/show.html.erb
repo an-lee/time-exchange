@@ -168,8 +168,28 @@
 
     <div class="col-md-3 col-sm-4">
       <aside class="rate_sidebar">
-        <h2>评分区</h2>
-        <p>待添加</p>
+        <div class="row">
+          <div class="small-2 large-2 columns">
+
+            <h2><%= @product.average("visual_effects").nil? ? '0' : @product.average("visual_effects").avg.round(1) %>|6.0</h2>
+            <p><%= @product.average("visual_effects").nil? ? '0' : @product.average("visual_effects").qty %>人评价</p>
+          </div>
+          <br>
+        <div class="row">
+          <div class="small-2 large-4 columns">
+            <% if current_user %>
+              My Rate <%= rating_for @product, "visual_effects", star: 6 ,
+              disable_after_rate: false,
+              cancel_place: 'right',
+              target: '#hintDiv', cancel_hint: 'Cancel this vote!'
+              %>
+              <div id="hintDiv"></div>
+              
+            <% else %>
+              <%= rating_for @product, "visual_effects", star: 6 %>
+            <% end %>
+          </div>
+        </div>
       </aside>
 
       <aside class="shop_sidebar">

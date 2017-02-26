@@ -43,6 +43,10 @@ gem 'fog'
 gem 'owlcarousel-rails'
 gem 'will_paginate'
 gem 'redcarpet'
+gem 'ratyrate'
+gem 'jquery-turbolinks'
+gem 'carrierwave-qiniu'
+gem 'qiniu-rs'
 
 
 group :development, :test do

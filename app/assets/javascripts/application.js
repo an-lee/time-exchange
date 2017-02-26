@@ -10,9 +10,10 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery.turbolinks
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+
 //= require bootstrap/alert
 //= require bootstrap/dropdown
 //= require bootstrap/carousel
@@ -26,6 +27,10 @@
 //= require components/wow.min
 //= require components/swiper.min
 //= require owl.carousel
+//= require jquery.raty.js
+//= require ratyrate.js.erb
 //= require_tree .
 
+
 $(".owl-carousel").owlCarousel();
+$(function(){ $(document).foundation(); });
