@@ -26,8 +26,8 @@ products =[{title:"代购咖啡",
 	        image_path: "#{Rails.root}/app/assets/images/1_hour/paidui.png",
 					is_hidden: false}
 ]
-p1 = Product.create([title:products[0][:title],description:products[0][:description],category:products[0][:category],quantity:20,price:10,image:open(products[0][:image_path]),is_hidden:products[0][:is_hidden]])
-p2 = Product.create([title:products[1][:title],description:products[1][:description],category:products[1][:category],quantity:20,price:10,image:open(products[1][:image_path]),is_hidden:products[0][:is_hidden]])
+p1 = Product.create([title:products[0][:title],description:products[0][:description],category:products[0][:category],quantity:20,price:5,image:open(products[0][:image_path]),is_hidden:products[0][:is_hidden]])
+p2 = Product.create([title:products[1][:title],description:products[1][:description],category:products[1][:category],quantity:20,price:5,image:open(products[1][:image_path]),is_hidden:products[0][:is_hidden]])
 puts "create products"
 
 # 1_day_product
@@ -43,8 +43,8 @@ products =[{title:"国刚说课",
 	        image_path: "#{Rails.root}/app/assets/images/1_day/shuozazhi.jpg",
 					is_hidden: false}
 ]
-p1 = Product.create([title:products[0][:title],description:products[0][:description],category:products[0][:category],quantity:20,price:10,image:open(products[0][:image_path]),is_hidden:products[0][:is_hidden]])
-p2 = Product.create([title:products[1][:title],description:products[1][:description],category:products[1][:category],quantity:20,price:10,image:open(products[1][:image_path]),is_hidden:products[0][:is_hidden]])
+p1 = Product.create([title:products[0][:title],description:products[0][:description],category:products[0][:category],quantity:20,price:4.99,image:open(products[0][:image_path]),is_hidden:products[0][:is_hidden]])
+p2 = Product.create([title:products[1][:title],description:products[1][:description],category:products[1][:category],quantity:20,price:4.99,image:open(products[1][:image_path]),is_hidden:products[0][:is_hidden]])
 puts "create products"
 
 
@@ -61,8 +61,8 @@ products =[{title:"刻意练习",
 	        image_path: "#{Rails.root}/app/assets/images/1_week/renleijianshi.png",
 					is_hidden: false}
 ]
-p1 = Product.create([title:products[0][:title],description:products[0][:description],category:products[0][:category],quantity:20,price:10,image:open(products[0][:image_path]),is_hidden:products[0][:is_hidden]])
-p2 = Product.create([title:products[1][:title],description:products[1][:description],category:products[1][:category],quantity:20,price:10,image:open(products[1][:image_path]),is_hidden:products[0][:is_hidden]])
+p1 = Product.create([title:products[0][:title],description:products[0][:description],category:products[0][:category],quantity:20,price:4.99,image:open(products[0][:image_path]),is_hidden:products[0][:is_hidden]])
+p2 = Product.create([title:products[1][:title],description:products[1][:description],category:products[1][:category],quantity:20,price:4.99,image:open(products[1][:image_path]),is_hidden:products[0][:is_hidden]])
 puts "create products"
 
 
@@ -79,8 +79,8 @@ products =[{title:"从零开始做产品",
 	        image_path: "#{Rails.root}/app/assets/images/3_month/kaizhixuetang_python.png",
 					is_hidden: false}
 ]
-p1 = Product.create([title:products[0][:title],description:products[0][:description],category:products[0][:category],quantity:20,price:10,image:open(products[0][:image_path]),is_hidden:products[0][:is_hidden]])
-p2 = Product.create([title:products[1][:title],description:products[1][:description],category:products[1][:category],quantity:20,price:10,image:open(products[1][:image_path]),is_hidden:products[0][:is_hidden]])
+p1 = Product.create([title:products[0][:title],description:products[0][:description],category:products[0][:category],quantity:20,price:1999,image:open(products[0][:image_path]),is_hidden:products[0][:is_hidden]])
+p2 = Product.create([title:products[1][:title],description:products[1][:description],category:products[1][:category],quantity:20,price:1999,image:open(products[1][:image_path]),is_hidden:products[0][:is_hidden]])
 puts "create products"
 
 
@@ -97,8 +97,8 @@ products =[{title:"李翔商业内刊",
 	        image_path: "#{Rails.root}/app/assets/images/1_year/lixiaolai.png",
 					is_hidden: false}
 ]
-p1 = Product.create([title:products[0][:title],description:products[0][:description],category:products[0][:category],quantity:20,price:10,image:open(products[0][:image_path]),is_hidden:products[0][:is_hidden]])
-p2 = Product.create([title:products[1][:title],description:products[1][:description],category:products[1][:category],quantity:20,price:10,image:open(products[1][:image_path]),is_hidden:products[0][:is_hidden]])
+p1 = Product.create([title:products[0][:title],description:products[0][:description],category:products[0][:category],quantity:20,price:199,image:open(products[0][:image_path]),is_hidden:products[0][:is_hidden]])
+p2 = Product.create([title:products[1][:title],description:products[1][:description],category:products[1][:category],quantity:20,price:199,image:open(products[1][:image_path]),is_hidden:products[0][:is_hidden]])
 puts "create products"
 
 
@@ -115,8 +115,8 @@ products =[{title:"新生大学",
 	        image_path: "#{Rails.root}/app/assets/images/7_year/quanzhanying.png",
 					is_hidden: false}
 ]
-p1 = Product.create([title:products[0][:title],description:products[0][:description],category:products[0][:category],quantity:20,price:10,image:open(products[0][:image_path]),is_hidden:products[0][:is_hidden]])
-p2 = Product.create([title:products[1][:title],description:products[1][:description],category:products[1][:category],quantity:20,price:10,image:open(products[1][:image_path]),is_hidden:products[0][:is_hidden]])
+p1 = Product.create([title:products[0][:title],description:products[0][:description],category:products[0][:category],quantity:20,price:2777,image:open(products[0][:image_path]),is_hidden:products[0][:is_hidden]])
+p2 = Product.create([title:products[1][:title],description:products[1][:description],category:products[1][:category],quantity:20,price:18000,image:open(products[1][:image_path]),is_hidden:products[0][:is_hidden]])
 puts "create products"
 
 # reviews = [product_id: 1,
