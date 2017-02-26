@@ -172,17 +172,17 @@
           <div class="small-2 large-2 columns">
 
             <h2><%= @product.average("visual_effects").nil? ? '0' : @product.average("visual_effects").avg.round(1) %>|6.0</h2>
-            <p><%= @product.average("visual_effects").nil? ? '0' : @product.average("visual_effects").qty %>人评价</p>
+            <p><%= @product.average("visual_effects").nil? ? '0' : @product.average("visual_effects").qty %>人参与评分</p>
           </div>
           <br>
         <div class="row">
           <div class="small-2 large-4 columns">
             <% if current_user %>
-              My Rate <%= rating_for @product, "visual_effects", star: 6 ,
+              我的评分 <%= rating_for @product, "visual_effects", star: 6 ,
               disable_after_rate: false,
               star_path: '/images/ratyrate/',
               cancel_place: 'right',
-              target: '#hintDiv', cancel_hint: 'Cancel this vote!'
+              target: '#hintDiv', cancel_hint: '撤销该评分！'
               %>
               <div id="hintDiv"></div>
 
