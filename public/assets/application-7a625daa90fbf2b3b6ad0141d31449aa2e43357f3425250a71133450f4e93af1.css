@@ -1,152 +1,188 @@
-/**** Base styles ****/
+/* 
+ * 	Core Owl Carousel CSS File
+ *	v1.3.3
+ */
 
-nav#page-nav {
-  display: block;
+/* clearfix */
+
+.owl-carousel .owl-wrapper:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+/* display none until init */
+.owl-carousel{
+	display: none;
+	position: relative;
+	width: 100%;
+	-ms-touch-action: pan-y;
+}
+.owl-carousel .owl-wrapper{
+	display: none;
+	position: relative;
+	-webkit-transform: translate3d(0px, 0px, 0px);
+}
+.owl-carousel .owl-wrapper-outer{
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+}
+.owl-carousel .owl-wrapper-outer.autoHeight{
+	-webkit-transition: height 500ms ease-in-out;
+	-moz-transition: height 500ms ease-in-out;
+	-ms-transition: height 500ms ease-in-out;
+	-o-transition: height 500ms ease-in-out;
+	transition: height 500ms ease-in-out;
+}
+	
+.owl-carousel .owl-item{
+	float: left;
+}
+.owl-controls .owl-page,
+.owl-controls .owl-buttons div{
+	cursor: pointer;
+}
+.owl-controls {
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-body {
-  overflow-y: scroll;
+/* mouse grab icon */
+.grabbing { 
+    cursor:url(grabbing.png) 8 8, move;
 }
 
-#container {
-  background: #FFF;
-  padding: 5px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  clear: both;
-  -webkit-border-radius: 5px;
-     -moz-border-radius: 5px;
-          border-radius: 5px;
+/* fix */
+.owl-carousel  .owl-wrapper,
+.owl-carousel  .owl-item{
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility:    hidden;
+	-ms-backface-visibility:     hidden;
+  -webkit-transform: translate3d(0,0,0);
+  -moz-transform: translate3d(0,0,0);
+  -ms-transform: translate3d(0,0,0);
 }
 
-.box {
-  margin: 5px;
-  padding: 5px;
-  background: #D8D5D2;
-  font-size: 11px;
-  line-height: 1.4em;
-  float: left;
-  -webkit-border-radius: 5px;
-     -moz-border-radius: 5px;
-          border-radius: 5px;
+/*
+* 	Owl Carousel Owl Demo Theme 
+*	v1.3.3
+*/
+
+
+.owl-theme .owl-controls{
+	margin-top: 10px;
+	text-align: center;
 }
 
-.box h2 {
-  font-size: 14px;
-  font-weight: 200;
+/* Styling Next and Prev buttons */
+
+.owl-theme .owl-controls .owl-buttons div{
+	color: #FFF;
+	display: inline-block;
+	zoom: 1;
+	*display: inline;/*IE7 life-saver */
+	margin: 5px;
+	padding: 3px 10px;
+	font-size: 12px;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+	background: #869791;
+	filter: Alpha(Opacity=50);/*IE7 fix*/
+	opacity: 0.5;
+}
+/* Clickable class fix problem with hover on touch devices */
+/* Use it for non-touch hover action */
+.owl-theme .owl-controls.clickable .owl-buttons div:hover{
+	filter: Alpha(Opacity=100);/*IE7 fix*/
+	opacity: 1;
+	text-decoration: none;
 }
 
-.box img {
-  display: block;
-  width: 100%;
+/* Styling Pagination*/
+
+.owl-theme .owl-controls .owl-page{
+	display: inline-block;
+	zoom: 1;
+	*display: inline;/*IE7 life-saver */
+}
+.owl-theme .owl-controls .owl-page span{
+	display: block;
+	width: 12px;
+	height: 12px;
+	margin: 5px 7px;
+	filter: Alpha(Opacity=50);/*IE7 fix*/
+	opacity: 0.5;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	background: #869791;
 }
 
-.col1 { width: 80px; }
-.col2 { width: 180px; }
-.col3 { width: 280px; }
-.col4 { width: 380px; }
-.col5 { width: 480px; }
-
-.col1 img { max-width: 80px; }
-.col2 img { max-width: 180px; }
-.col3 img { max-width: 280px; }
-.col4 img { max-width: 380px; }
-.col5 img { max-width: 480px; }
-
-/**** Clearfix ****/
-.clearfix:before, .clearfix:after { content: ""; display: table; }
-.clearfix:after { clear: both; }
-.clearfix { zoom: 1; }
-/* Centered example */
-
-.centered { margin: 0 auto; }
-/**** Fluid ****/
-
-
-#container.fluid  {
-  padding: 5px 0;
+.owl-theme .owl-controls .owl-page.active span,
+.owl-theme .owl-controls.clickable .owl-page:hover span{
+	filter: Alpha(Opacity=100);/*IE7 fix*/
+	opacity: 1;
 }
 
-/* right margin value is 0.1% less than calculated,
-  to allow for rounding errors in Firefox */
-.fluid .box {
-  margin: 5px 0.9% 5px 1%;
-  padding: 5px 1%;
+/* If PaginationNumbers is true */
+
+.owl-theme .owl-controls .owl-page span.owl-numbers{
+	height: auto;
+	width: auto;
+	color: #FFF;
+	padding: 2px 10px;
+	font-size: 12px;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
 }
 
-.fluid .box.col1 { width: 16%; }
-.fluid .box.col2 { width: 36%; }
-.fluid .box.col3 { width: 56%; }
-/**** Gutters ****/
-
-
-.has-gutters .box {
-  margin: 5px 0;
+/* preloading images */
+.owl-item.loading{
+	min-height: 150px;
+	background: url(AjaxLoader.gif) no-repeat center center
+}
+/* line 5, /Users/anli/time-exchange/app/assets/stylesheets/about.scss */
+.person {
+  border: 10px solid transparent;
+  margin-bottom: 25px;
+  width: 50%;
+  height: 50%;
+  opacity: 0.7;
 }
 
-.has-gutters .col1 { width: 90px; }
-.has-gutters .col2 { width: 230px; }
-.has-gutters .col3 { width: 370px; }
-.has-gutters .col4 { width: 550px; }
-/* Infinite Scroll loader */
-
-#infscr-loading { 
-  text-align: center;
-  z-index: 100;
-  position: fixed;
-  left: 45%;
-  bottom: 40px;
-  width: 200px;
-  padding: 10px;
-  background: #000; 
-  opacity: 0.8;
-  color: #FFF;
-  -webkit-border-radius: 10px;
-     -moz-border-radius: 10px;
-          border-radius: 10px;
+/* line 12, /Users/anli/time-exchange/app/assets/stylesheets/about.scss */
+.person:hover {
+  border-color: #f1f1f1;
 }
 
-.rtl .box {
-  float: right;
-  text-align: right; 
-  direction: rtl;
-}
-/**** Transitions ****/
-
-
-.transitions-enabled.masonry,
-.transitions-enabled.masonry .masonry-brick {
-  -webkit-transition-duration: 0.7s;
-     -moz-transition-duration: 0.7s;
-      -ms-transition-duration: 0.7s;
-       -o-transition-duration: 0.7s;
-          transition-duration: 0.7s;
+/* line 16, /Users/anli/time-exchange/app/assets/stylesheets/about.scss */
+.qcode {
+  width: 50%;
+  height: auto;
 }
 
-.transitions-enabled.masonry {
-  -webkit-transition-property: height, width;
-     -moz-transition-property: height, width;
-      -ms-transition-property: height, width;
-       -o-transition-property: height, width;
-          transition-property: height, width;
+/* line 21, /Users/anli/time-exchange/app/assets/stylesheets/about.scss */
+.team {
+  display: talbe;
 }
 
-.transitions-enabled.masonry  .masonry-brick {
-  -webkit-transition-property: left, right, top;
-     -moz-transition-property: left, right, top;
-      -ms-transition-property: left, right, top;
-       -o-transition-property: left, right, top;
-          transition-property: left, right, top;
+/* line 25, /Users/anli/time-exchange/app/assets/stylesheets/about.scss */
+.team1 {
+  display: table-cell;
 }
 
-
-/* disable transitions on container */
-.transitions-enabled.infinite-scroll.masonry {
-  -webkit-transition-property: none;
-     -moz-transition-property: none;
-      -ms-transition-property: none;
-       -o-transition-property: none;
-          transition-property: none;
+/* line 29, /Users/anli/time-exchange/app/assets/stylesheets/about.scss */
+.team2 {
+  display: table-cell;
 }
 /* line 6, /Users/anli/time-exchange/app/assets/stylesheets/admin/products.scss */
 .shopping-cart {
@@ -469,12 +505,245 @@ body {
 .amount {
   color: #ef0568;
 }
-/* line 6, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+/* line 5, /Users/anli/time-exchange/app/assets/stylesheets/faq.scss */
+.faq {
+  padding: 0 15% 0 15%;
+}
+/* post */
+/* line 11, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+.panel-shadow {
+  box-shadow: rgba(0, 0, 0, 0.3) 7px 7px 7px;
+}
+
+/* line 14, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+.panel-white {
+  border: 1px solid #dddddd;
+}
+
+/* line 17, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+.panel-white .panel-heading {
+  color: #333;
+  background-color: #fff;
+  border-color: #ddd;
+}
+
+/* line 22, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+.panel-white .panel-footer {
+  background-color: #fff;
+  border-color: #ddd;
+}
+
+/* line 27, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+.post .post-heading {
+  height: 95px;
+  padding: 20px 15px;
+}
+
+/* line 31, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+.post .post-heading .avatar {
+  width: 60px;
+  height: 60px;
+  display: block;
+  margin-right: 15px;
+}
+
+/* line 37, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+.post .post-heading .meta .title {
+  margin-bottom: 0;
+}
+
+/* line 40, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+.post .post-heading .meta .title a {
+  color: black;
+}
+
+/* line 43, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+.post .post-heading .meta .title a:hover {
+  color: #aaaaaa;
+}
+
+/* line 46, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+.post .post-heading .meta .time {
+  margin-top: 8px;
+  color: #999;
+}
+
+/* line 50, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+.post .post-image .image {
+  width: 100%;
+  height: auto;
+}
+
+/* line 54, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+.post .post-description {
+  padding: 15px;
+}
+
+/* line 57, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+.post .post-description p {
+  font-size: 14px;
+}
+
+/* line 60, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+.post .post-description .stats {
+  margin-top: 20px;
+}
+
+/* line 63, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+.post .post-description .stats .stat-item {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+/* line 67, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+.post .post-description .stats .stat-item .icon {
+  margin-right: 8px;
+}
+
+/* line 71, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+.post .post-footer .input-group-addon a {
+  color: #454545;
+}
+
+/* line 74, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+.post .post-footer .comments-list {
+  padding: 0;
+  margin-top: 20px;
+  list-style-type: none;
+}
+
+/* line 79, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+.post .post-footer .comments-list .comment {
+  display: block;
+  width: 100%;
+  margin: 20px 0;
+}
+
+/* line 84, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+.post .post-footer .comments-list .comment .avatar {
+  width: 35px;
+  height: 35px;
+}
+
+/* line 88, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+.post .post-footer .comments-list .comment .comment-heading {
+  display: block;
+  width: 100%;
+}
+
+/* line 92, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+.post .post-footer .comments-list .comment .comment-heading .user {
+  font-size: 14px;
+  font-weight: bold;
+  display: inline;
+  margin-top: 0;
+  margin-right: 10px;
+}
+
+/* line 99, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+.post .post-footer .comments-list .comment .comment-heading .time {
+  font-size: 12px;
+  color: #aaa;
+  margin-top: 0;
+  display: inline;
+}
+
+/* line 105, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+.post .post-footer .comments-list .comment .comment-body {
+  margin-left: 50px;
+}
+
+/* line 108, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+.post .post-footer .comments-list .comment > .comments-list {
+  margin-left: 50px;
+}
+
+/* slide */
+/* line 114, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+.carousel-inner img {
+  width: 70%;
+  /* Set width to 100% */
+  height: auto;
+  margin: auto;
+}
+
+/* line 121, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+.shop_sidebar {
+  background-color: #fff;
+  display: block;
+  padding: 2em;
+  text-align: center;
+  border-radius: 1.5em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+/* line 131, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+.rate_sidebar {
+  background-color: #fff;
+  display: block;
+  padding: 2em;
+  text-align: center;
+  border-radius: 1.5em;
+  margin-bottom: 1em;
+}
+
+/* line 140, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+.item-price h2 {
+  color: #ef0568;
+}
+
+/* line 144, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+.thing_details {
+  background-color: #fff;
+  display: block;
+  padding: 2em 3em;
+  border-radius: 1.5em;
+  margin-bottom: 2em;
+}
+
+/* line 152, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+.comment {
+  background-color: #fff;
+  display: block;
+  padding: 2em 3em;
+  margin-bottom: 2em;
+}
+
+/* line 159, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+.comment h2 {
+  text-align: center;
+}
+
+/* line 163, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+.review {
+  background-color: #fff;
+  display: block;
+  padding: 2em 3em;
+  margin-bottom: 2em;
+}
+
+/* line 170, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+.article {
+  background-color: #fafafa;
+  display: block;
+  padding: 2em 3em;
+  border-radius: 1.5em;
+  margin-bottom: 2em;
+}
+
+/* line 178, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+.thing_content {
+  display: block;
+  box-sizing: border-box;
+}
+
+/* line 183, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
 .nav-tabs li a {
   color: #777;
 }
 
-/* line 10, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+/* line 187, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
 .thumbnail {
   display: block;
   padding: 4px;
@@ -488,19 +757,19 @@ body {
   transition: border 0.2s ease-in-out;
 }
 
-/* line 25, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+/* line 202, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
 .shop-item {
   width: 100%;
   margin-bottom: 36px;
 }
 
-/* line 30, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+/* line 207, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
 .shop-item .shop-thumbnail {
   position: relative;
   overflow: hidden;
 }
 
-/* line 35, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+/* line 212, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
 .shop-item .shop-thumbnail .item-link {
   position: absolute;
   display: block;
@@ -511,7 +780,7 @@ body {
   left: 0;
 }
 
-/* line 45, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+/* line 222, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
 .shop-item .shop-thumbnail > img {
   display: block;
   width: auto;
@@ -525,48 +794,47 @@ body {
   transition: opacity 0.35s;
 }
 
-/* line 58, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+/* line 235, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
 .shop-item .shop-item-details {
   display: table;
   width: 100%;
 }
 
-/* line 64, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+/* line 241, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
 .shop-item .shop-item-details .shop-item-title,
 .shop-item .shop-item-details .shop-item-price {
   display: table-cell;
   vertical-align: top;
 }
 
-/* line 70, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+/* line 247, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
 .shop-item .shop-item-details .shop-item-title {
-  width: 80%;
-  font-size: 14px;
-  color: #a6a7aa;
-  font-weight: 400;
+  width: 70%;
+  font-size: 16px;
+  font-weight: normal;
 }
 
-/* line 77, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+/* line 253, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
 .shop-item .shop-item-details .shop-item-title > a {
   color: #999;
   text-decoration: none;
 }
 
-/* line 82, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+/* line 258, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
 .shop-item .shop-item-details .shop-item-price {
-  width: 20%;
+  width: 30%;
   font-size: 16px;
   text-align: right;
 }
 
-/* line 88, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+/* line 264, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
 .shop-item .shop-item-details .shop-item-price .old-price {
   font-size: 14px;
   color: #999;
   text-decoration: line-through;
 }
 
-/* line 94, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+/* line 270, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
 .shop-item .shop-item-tools {
   position: absolute;
   z-index: 2;
@@ -580,7 +848,7 @@ body {
   transition: opacity 0.35s, visibility 0.35s;
 }
 
-/* line 107, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+/* line 283, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
 .shop-item .shop-item-tools .add-to-whishlist {
   display: inline-block;
   vertical-align: middle;
@@ -594,35 +862,35 @@ body {
   border-radius: 4px;
 }
 
-/* line 120, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+/* line 296, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
 .shop-item .shop-item-tools .add-to-whishlist:hover {
   color: #ef0568;
 }
 
-/* line 124, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+/* line 300, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
 .shop-item .shop-item-tools .add-to-cart {
   margin: 0;
   margin-left: 7px;
 }
 
-/* line 129, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+/* line 305, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
 .shop-item:hover .shop-thumbnail .thumbnail {
   opacity: .5;
 }
 
-/* line 133, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+/* line 309, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
 .shop-item:hover .shop-item-tools {
   visibility: visible;
   opacity: 1;
 }
 
-/* line 138, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+/* line 314, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
 .touch .shop-item .shop-item-tools {
   visibility: visible;
   opacity: 1;
 }
 
-/* line 143, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+/* line 319, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
 .shop-label {
   position: absolute;
   z-index: 1;
@@ -637,7 +905,7 @@ body {
   padding: 0 14px;
 }
 
-/* line 157, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+/* line 333, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
 .add-to-cart {
   position: relative;
   display: inline-block;
@@ -658,17 +926,17 @@ body {
   transition: background-color 0.3s;
 }
 
-/* line 177, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+/* line 353, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
 .add-to-cart:hover {
   color: #ef0568;
 }
 
-/* line 181, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+/* line 357, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
 .add-to-cart:focus, .add-to-cart:active {
   color: #ef0568;
 }
 
-/* line 185, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+/* line 361, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
 .add-to-cart em {
   position: absolute;
   top: 0;
@@ -689,7 +957,7 @@ body {
   transition: transform 0.3s;
 }
 
-/* line 205, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+/* line 381, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
 .add-to-cart svg {
   /* this is the check icon */
   position: absolute;
@@ -706,7 +974,7 @@ body {
   transition: transform 0.3s;
 }
 
-/* line 221, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+/* line 397, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
 .add-to-cart.is-added em {
   color: transparent;
   -webkit-transform: translateX(-100%);
@@ -719,7 +987,7 @@ body {
   transition: transform 0s;
 }
 
-/* line 233, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
+/* line 409, /Users/anli/time-exchange/app/assets/stylesheets/products.scss */
 .add-to-cart.is-added svg {
   -webkit-transform: translateX(-50%) translateY(-50%);
   -moz-transform: translateX(-50%) translateY(-50%);
@@ -729,6 +997,127 @@ body {
   -webkit-transition: transform 0s;
   -o-transition: transform 0s;
   transition: transform 0s;
+}
+/* line 5, /Users/anli/time-exchange/app/assets/stylesheets/welcome.scss */
+.hero-shot {
+  display: block;
+  background: rgba(6, 164, 235, 0.5);
+  background-image: url(//d9hhrg4mnvzow.cloudfront.net/unbouncepages.com/time-ex/f4ab583f-portrait-2054725-1920.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  -ms-behavior: url(//d9hhrg4mnvzow.cloudfront.net/backgroundsize.min.htc);
+  behavior: url(//d9hhrg4mnvzow.cloudfront.net/backgroundsize.min.htc);
+  border-style: none none none none;
+  border-width: undefinedpx;
+  border-color: none;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0px;
+  border-radius: 0px;
+  width: 100%;
+  height: 450px;
+  position: relative;
+}
+
+/* line 29, /Users/anli/time-exchange/app/assets/stylesheets/welcome.scss */
+.hero-shot-color-overlay {
+  position: absolute;
+  background: rgba(6, 164, 235, 0.7);
+  -pie-background: rgba(6, 164, 235, 0.7);
+  behavior: url(/PIE.htc);
+  height: 450px;
+  width: 100%;
+}
+
+/* line 38, /Users/anli/time-exchange/app/assets/stylesheets/welcome.scss */
+.img-value {
+  border: 10px solid transparent;
+  margin-bottom: 25px;
+  width: 70%;
+  opacity: 0.7;
+}
+
+/* line 45, /Users/anli/time-exchange/app/assets/stylesheets/welcome.scss */
+.img-value:hover {
+  border-color: #f1f1f1;
+}
+
+/* line 49, /Users/anli/time-exchange/app/assets/stylesheets/welcome.scss */
+.value-margin {
+  margin-bottom: 50px !important;
+  margin-right: 50px !important;
+  margin-left: 50px !important;
+}
+
+/* line 55, /Users/anli/time-exchange/app/assets/stylesheets/welcome.scss */
+.img-product {
+  border: 10px solid transparent;
+  width: 80%;
+  opacity: 0.9;
+}
+
+/* line 61, /Users/anli/time-exchange/app/assets/stylesheets/welcome.scss */
+.user {
+  border: 5px solid;
+  border-color: #f1f1f1;
+  width: 100px;
+  height: 100px;
+  opacity: 0.7;
+}
+
+/* line 70, /Users/anli/time-exchange/app/assets/stylesheets/welcome.scss */
+#lp-pom-text-137 {
+  display: block;
+  background: rgba(255, 255, 255, 0);
+  -pie-background: rgba(255, 255, 255, 0);
+  border-style: none;
+  behavior: url(/PIE.htc);
+  border-radius: 0px;
+  left: 101px;
+  top: 1506px;
+  z-index: 45;
+  width: 123px;
+  height: 22px;
+  position: absolute;
+}
+
+/* line 86, /Users/anli/time-exchange/app/assets/stylesheets/welcome.scss */
+.action-bar {
+  display: block;
+  background: rgba(6, 164, 235, 0.5);
+  background-image: url(//d9hhrg4mnvzow.cloudfront.net/unbouncepages.com/time-ex/f4ab583f-portrait-2054725-1920.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  -ms-behavior: url(//d9hhrg4mnvzow.cloudfront.net/backgroundsize.min.htc);
+  behavior: url(//d9hhrg4mnvzow.cloudfront.net/backgroundsize.min.htc);
+  border-style: none none none none;
+  border-width: undefinedpx;
+  border-color: none;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0px;
+  border-radius: 0px;
+  width: 100%;
+  height: 200px;
+  position: relative;
+}
+
+/* line 110, /Users/anli/time-exchange/app/assets/stylesheets/welcome.scss */
+.action-bar-overlay {
+  position: absolute;
+  background: rgba(6, 164, 235, 0.7);
+  -pie-background: rgba(6, 164, 235, 0.7);
+  behavior: url(/PIE.htc);
+  height: 200px;
+  width: 100%;
 }
 @charset "UTF-8";
 /*
@@ -747,11 +1136,6 @@ body {
 
 
 
-
-
-
-
-
  */
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
@@ -759,6 +1143,7 @@ body {
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+@import url(http://fonts.googleapis.com/css?family=Roboto);
 /* line 9, /Users/anli/.rvm/gems/ruby-2.3.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_normalize.scss */
 html {
   font-family: sans-serif;
@@ -14435,19 +14820,124 @@ button.close {
   content: "\e00c";
 }
 
-/* line 32, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/****** LOGIN MODAL ******/
+/* line 28, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+.loginmodal-container {
+  padding: 30px;
+  max-width: 350px;
+  width: 100% !important;
+  background-color: #F7F7F7;
+  margin: 0 auto;
+  border-radius: 2px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  font-family: roboto;
+}
+
+/* line 40, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+.loginmodal-container h1 {
+  text-align: center;
+  font-size: 1.8em;
+  font-family: roboto;
+}
+
+/* line 46, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+.loginmodal-container input[type=submit] {
+  width: 100%;
+  display: block;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+/* line 53, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+.loginmodal-container input[type=text], input[type=password] {
+  height: 44px;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 10px;
+  -webkit-appearance: none;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-top: 1px solid #c0c0c0;
+  /* border-radius: 2px; */
+  padding: 0 8px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+/* line 68, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+.loginmodal-container input[type=text]:hover, input[type=password]:hover {
+  border: 1px solid #b9b9b9;
+  border-top: 1px solid #a0a0a0;
+  -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* line 76, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+.loginmodal {
+  text-align: center;
+  font-size: 14px;
+  font-family: 'Arial', sans-serif;
+  font-weight: 700;
+  height: 36px;
+  padding: 0 8px;
+  /* border-radius: 3px; */
+  /* -webkit-user-select: none;
+    user-select: none; */
+}
+
+/* line 88, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+.loginmodal-submit {
+  /* border: 1px solid #3079ed; */
+  border: 0px;
+  color: #fff;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+  background-color: #4d90fe;
+  padding: 17px 0px;
+  font-family: roboto;
+  font-size: 14px;
+  /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed)); */
+}
+
+/* line 100, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+.loginmodal-submit:hover {
+  /* border: 1px solid #2f5bb7; */
+  border: 0px;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  background-color: #357ae8;
+  /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
+}
+
+/* line 108, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+.loginmodal-container a {
+  text-decoration: none;
+  color: #666;
+  font-weight: 400;
+  text-align: center;
+  display: inline-block;
+  opacity: 0.6;
+  transition: opacity ease 0.5s;
+}
+
+/* line 118, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+.login-help {
+  font-size: 12px;
+}
+
+/* line 123, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 th {
   text-align: left;
 }
 
-/* line 36, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 127, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 table {
   width: 100%;
   max-width: 100%;
   margin-bottom: 24px;
 }
 
-/* line 42, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 133, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 table > thead > tr > th,
 table > thead > tr > td,
 table > tbody > tr > th,
@@ -14460,30 +14950,30 @@ table > tfoot > tr > td {
   border-bottom: 1px solid #ededed;
 }
 
-/* line 54, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 145, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 table > thead > tr > th,
 table > thead > tr > td {
   border-bottom-width: 2px !important;
 }
 
-/* line 59, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 150, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 table > thead > tr > th {
   vertical-align: bottom;
   border-bottom: 1px solid #ededed;
 }
 
-/* line 64, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 155, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 table > tbody + tbody {
   border-top: 2px solid #ededed;
 }
 
-/* line 68, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 159, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .table-responsive {
   overflow-x: auto;
   min-height: 0.01%;
 }
 
-/* line 74, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 165, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .form-control {
   display: block;
   width: 100%;
@@ -14506,51 +14996,51 @@ table > tbody + tbody {
   transition: all 0.3s;
 }
 
-/* line 96, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 187, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .form-control:focus {
   border-color: #77cde3;
   outline: none;
 }
 
-/* line 101, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 192, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .form-control::-moz-placeholder {
   color: #606060;
   opacity: 1;
 }
 
-/* line 106, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 197, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .form-control:-ms-input-placeholder {
   color: #606060;
 }
 
-/* line 110, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 201, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .form-control::-webkit-input-placeholder {
   color: #606060;
 }
 
-/* line 114, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 205, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .form-control.placeholder {
   color: #606060;
 }
 
-/* line 118, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 209, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 textarea.form-control {
   height: auto !important;
   padding: 13px 16px !important;
 }
 
-/* line 123, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 214, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .form-group {
   margin-bottom: 24px;
 }
 
-/* line 127, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 218, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .form-element {
   position: relative;
   margin-bottom: 24px;
 }
 
-/* line 132, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 223, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .form-element > i {
   display: block;
   position: absolute;
@@ -14559,13 +15049,13 @@ textarea.form-control {
   font-size: 20px;
 }
 
-/* line 140, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 231, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .form-group .form-control,
 .form-element .form-control {
   margin-bottom: 0;
 }
 
-/* line 145, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 236, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 label {
   display: block;
   color: #606060;
@@ -14574,22 +15064,22 @@ label {
   font-weight: 500;
 }
 
-/* line 153, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 244, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 select.form-control::-ms-expand {
   display: none;
 }
 
-/* line 157, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 248, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 select option {
   color: #606060;
 }
 
-/* line 161, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 252, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .form-control-sm {
   height: 36px;
 }
 
-/* line 165, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 256, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .form-element:before {
   position: absolute;
   display: block;
@@ -14605,43 +15095,43 @@ select option {
   transition: opacity 0.3s;
 }
 
-/* line 180, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 271, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .form-element.error .form-control {
   border-color: #ef0568;
   padding-right: 40px;
 }
 
-/* line 185, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 276, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .form-element.error:before {
   content: "\e5c9";
   color: #ef0568;
   opacity: 1;
 }
 
-/* line 191, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 282, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .form-element.error:focus {
   border-color: #ef0568;
 }
 
-/* line 195, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 286, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .form-element.valid .form-control {
   border-color: #a7c04d;
   padding-right: 40px;
 }
 
-/* line 200, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 291, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .form-element.valid:before {
   content: "\e5ca";
   color: #a7c04d;
   opacity: 1;
 }
 
-/* line 206, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 297, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .form-element.valid:focus {
   border-color: #a7c04d;
 }
 
-/* line 210, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 301, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .form-element.form-select:before {
   content: "\e5c5";
   font-size: 22px;
@@ -14653,7 +15143,7 @@ select option {
 /*--------------------------------------------------
     [Cart dropdown items]
 ----------------------------------------------------*/
-/* line 223, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 314, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .cart-dropdown {
   display: none;
   position: absolute;
@@ -14670,7 +15160,7 @@ select option {
   cursor: default;
 }
 
-/* line 239, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 330, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .dropdown-menu .cart-item {
   position: relative;
   display: table;
@@ -14680,25 +15170,25 @@ select option {
   margin-bottom: 15px;
 }
 
-/* line 248, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 339, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .dropdown-menu .cart-item .item-thumb,
 .dropdown-menu .cart-item .item-details {
   display: table-cell;
   vertical-align: top;
 }
 
-/* line 254, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 345, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .dropdown-menu .cart-item .item-thumb {
   width: 80px;
   padding-right: 15px;
 }
 
-/* line 259, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 350, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .dropdown-menu .cart-item .item-thumb > img {
   width: 100%;
 }
 
-/* line 263, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 354, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .dropdown-menu .cart-item .item-title {
   font-size: 14px;
   font-weight: normal;
@@ -14706,26 +15196,26 @@ select option {
   margin-bottom: 6px;
 }
 
-/* line 270, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 361, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .dropdown-menu .cart-item .item-title > a {
   color: #606060;
   text-decoration: none;
 }
 
-/* line 275, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 366, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .dropdown-menu .cart-item .item-title > a:hover, .dropdown-menu .cart-item .item-title > a:focus {
   color: #a6a6a6;
   text-decoration: none;
 }
 
-/* line 280, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 371, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .dropdown-menu .cart-item .item-price {
   font-size: 14px;
   color: #999;
   margin-bottom: 0;
 }
 
-/* line 286, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 377, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .dropdown-menu .cart-item .close-btn {
   position: absolute;
   top: -3px;
@@ -14733,32 +15223,32 @@ select option {
   font-size: 14px;
 }
 
-/* line 293, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 384, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .dropdown-menu .cart-item .close-btn:hover {
   color: #ef0568;
 }
 
-/* line 297, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 388, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .dropdown .cart-subtotal {
   display: table;
   width: 100%;
 }
 
-/* line 302, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 393, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .dropdown .cart-subtotal .column {
   display: table-cell;
   vertical-align: top;
   width: 50%;
 }
 
-/* line 308, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 399, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .dropdown .cart-subtotal span {
   display: block;
   font-size: 14px;
   color: #999;
 }
 
-/* line 314, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 405, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .dropdown .cart-subtotal .amount {
   font-size: 14px;
   color: #606060;
@@ -14766,7 +15256,7 @@ select option {
   text-align: right;
 }
 
-/* line 322, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 413, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .dropdown-menu .sub-menu {
   position: relative;
   font-size: 13px;
@@ -14779,7 +15269,7 @@ select option {
   right: 0;
 }
 
-/* line 334, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 425, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .count {
   position: relative;
   display: block;
@@ -14795,37 +15285,37 @@ select option {
   right: -17px;
 }
 
-/* line 349, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 440, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .dropdown:hover .dropdown-menu {
   display: block;
 }
 
-/* line 355, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 446, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 html {
   overflow-x: hidden;
 }
 
-/* line 359, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 450, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 html, html a, body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* line 363, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 454, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 body {
-  font-family: Hind, sans-serif;
+  font-family: Verdana,"Helvetica Neue",Helvetica, "Nimbus Sans L", Arial, "Liberation Sans", "PingFang SC", "Hiragino Sans GB", "Source Han Sans CN", "Source Han Sans SC", "Microsoft YaHei", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti", SimHei, "WenQuanYi Zen Hei Sharp", sans-serif;
 }
 
-/* line 367, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 458, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 p {
   font-size: 15px;
   font-weight: 400;
-  font-family: Hind, sans-serif;
+  font-family: Verdana,"Helvetica Neue",Helvetica, "Nimbus Sans L", Arial, "Liberation Sans", "PingFang SC", "Hiragino Sans GB", "Source Han Sans CN", "Source Han Sans SC", "Microsoft YaHei", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti", SimHei, "WenQuanYi Zen Hei Sharp", sans-serif;
   color: #a6a7aa;
   line-height: 1.4;
   margin-bottom: 15px;
 }
 
-/* line 376, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 467, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 em,
 li,
 li a {
@@ -14834,21 +15324,21 @@ li a {
   color: #515769;
 }
 
-/* line 384, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 475, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 a {
   font-family: Hind, sans-serif;
   color: #81848f;
   outline: 0;
 }
 
-/* line 390, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 481, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 a:focus, a:hover, a:active {
   outline: 0;
   color: #999caa;
   text-decoration: none;
 }
 
-/* line 396, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 487, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .link {
   position: relative;
   font-size: 13px;
@@ -14857,7 +15347,7 @@ a:focus, a:hover, a:active {
   text-transform: uppercase;
 }
 
-/* line 404, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 495, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .link:after {
   position: absolute;
   top: 8px;
@@ -14868,7 +15358,7 @@ a:focus, a:hover, a:active {
   content: " ";
 }
 
-/* line 414, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 505, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 span {
   font-size: 14px;
   font-weight: 400;
@@ -14876,86 +15366,86 @@ span {
   color: #bfc1c7;
 }
 
-/* line 421, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 512, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
-  font-family: Hind, sans-serif;
+  font-family: Verdana,"Helvetica Neue",Helvetica, "Nimbus Sans L", Arial, "Liberation Sans", "PingFang SC", "Hiragino Sans GB", "Source Han Sans CN", "Source Han Sans SC", "Microsoft YaHei", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti", SimHei, "WenQuanYi Zen Hei Sharp", sans-serif;
   color: #515769;
   line-height: 1.4;
   margin: 0 0 15px;
 }
 
-/* line 429, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 520, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 h1 > a, h2 > a, h3 > a, h4 > a, h5 > a, h6 > a {
   color: #515769;
 }
 
-/* line 433, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 524, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 h1 > a:hover, h2 > a:hover, h3 > a:hover, h4 > a:hover, h5 > a:hover, h6 > a:hover {
   color: #999caa;
   text-decoration: none;
 }
 
-/* line 438, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 529, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 h1 > a:focus, h2 > a:focus, h3 > a:focus, h4 > a:focus, h5 > a:focus, h6 > a:focus {
   text-decoration: none;
 }
 
-/* line 442, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 533, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 h1 {
   font-size: 40px;
 }
 
-/* line 446, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 537, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 h2 {
   font-size: 30px;
 }
 
-/* line 450, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 541, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 h3 {
   font-size: 22px;
 }
 
-/* line 454, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 545, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 h4 {
   font-size: 22px;
 }
 
-/* line 458, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 549, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 ::selection {
   color: #fff;
   background: #17bed2;
   text-shadow: none;
 }
 
-/* line 464, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 555, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 ::-webkit-selection {
   color: #fff;
   background: #17bed2;
   text-shadow: none;
 }
 
-/* line 470, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 561, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 ::-moz-selection {
   color: #fff;
   background: #17bed2;
   text-shadow: none;
 }
 
-/* line 476, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 567, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 :active,
 :focus {
   outline: none;
 }
 
 /* Section Seperator */
-/* line 482, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 573, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .section-seperator {
   border-bottom: 1px solid #edf0f2;
 }
 
 /* Content Wrapper Link */
-/* line 487, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 578, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .content-wrapper-link {
   position: absolute;
   top: 0;
@@ -14970,7 +15460,7 @@ h4 {
 /*------------------------------------------------------------------
   	[Blockquote]
 ------------------------------------------------------------------*/
-/* line 501, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 592, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .blockquote {
   position: relative;
   font-size: 17px;
@@ -14982,7 +15472,7 @@ h4 {
   margin-left: 20px;
 }
 
-/* line 512, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 603, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .blockquote:before {
   position: absolute;
   top: 0;
@@ -14996,7 +15486,7 @@ h4 {
 /*------------------------------------------------------------------
   	[Button]
 ------------------------------------------------------------------*/
-/* line 525, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 616, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-theme {
   position: relative;
   display: inline-block;
@@ -15015,30 +15505,30 @@ h4 {
   user-select: none;
 }
 
-/* line 543, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 634, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-theme:focus, .btn-theme:active:focus, .btn-theme.active:focus, .btn-theme.focus, .btn-theme:active.focus, .btn-theme.active.focus {
   outline: none;
 }
 
-/* line 547, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 638, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-theme:hover {
   transition-duration: 300ms;
   transition-property: all;
   transition-timing-function: cubic-bezier(0.7, 1, 0.7, 1);
 }
 
-/* line 553, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 644, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-theme:hover, .btn-theme:focus, .btn-theme.focus {
   text-decoration: none;
 }
 
-/* line 557, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 648, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-theme:active, .btn-theme.active {
   background-image: none;
   outline: 0;
 }
 
-/* line 562, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 653, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-theme.disabled, .btn-theme[disabled],
 fieldset[disabled] .btn-theme {
   cursor: not-allowed;
@@ -15047,7 +15537,7 @@ fieldset[disabled] .btn-theme {
   pointer-events: none;
 }
 
-/* line 570, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 661, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-base-bg {
   color: #fff;
   background: #17bed2;
@@ -15055,21 +15545,21 @@ fieldset[disabled] .btn-theme {
   border-width: 0;
 }
 
-/* line 577, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 668, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-base-bg:hover, .btn-base-bg:focus, .btn-base-bg.focus {
   color: #fff;
   background: #63cbd7;
   border-color: transparent;
 }
 
-/* line 583, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 674, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-theme-sm {
   font-size: 13px;
   font-weight: 600;
   padding: 15px 40px;
 }
 
-/* line 589, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 680, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn, .back-btn, .done-btn, .search-btn {
   display: inline-block;
   height: 48px;
@@ -15105,49 +15595,49 @@ fieldset[disabled] .btn-theme {
   background-color: #ededed;
 }
 
-/* line 624, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 715, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn:hover, .back-btn:hover, .done-btn:hover, .search-btn:hover {
   background-color: #d6d6d6;
 }
 
-/* line 628, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 719, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn:hover, .back-btn:hover, .done-btn:hover, .search-btn:hover {
   color: #606060;
   text-decoration: none;
   outline: none;
 }
 
-/* line 634, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 725, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn:focus, .back-btn:focus, .done-btn:focus, .search-btn:focus {
   text-decoration: none;
   outline: none;
 }
 
-/* line 639, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 730, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn:active, .back-btn:active, .done-btn:active, .search-btn:active, .btn.active, .active.back-btn, .active.done-btn, .active.search-btn {
   outline: 0;
   background-image: none;
 }
 
-/* line 644, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 735, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn.disabled, .disabled.back-btn, .disabled.done-btn, .disabled.search-btn, .btn[disabled], [disabled].back-btn, [disabled].done-btn, [disabled].search-btn {
   cursor: not-allowed;
   background-color: #ededed !important;
 }
 
-/* line 649, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 740, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn.disabled:hover, .disabled.back-btn:hover, .disabled.done-btn:hover, .disabled.search-btn:hover, .btn[disabled]:hover, [disabled].back-btn:hover, [disabled].done-btn:hover, [disabled].search-btn:hover {
   background-color: #ededed !important;
 }
 
-/* line 653, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 744, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn i, .back-btn i, .done-btn i, .search-btn i, .btn i:before, .back-btn i:before, .done-btn i:before, .search-btn i:before {
   display: inline-block;
   line-height: 1.5;
   font-size: 18px;
 }
 
-/* line 659, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 750, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 a.btn.disabled, a.disabled.back-btn, a.disabled.done-btn, a.disabled.search-btn,
 fieldset[disabled] a.btn,
 fieldset[disabled] a.back-btn,
@@ -15158,7 +15648,7 @@ fieldset[disabled] a.search-btn {
   pointer: not-allowed;
 }
 
-/* line 669, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 760, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-primary, .btn-primary:hover,
 .btn-primary:active, .btn-primary:focus,
 .btn-success, .btn-success:hover,
@@ -15172,201 +15662,201 @@ fieldset[disabled] a.search-btn {
   color: #fff;
 }
 
-/* line 682, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 773, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-primary {
   background-color: #77cde3;
 }
 
-/* line 686, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 777, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-primary:hover {
   background-color: #51bfdb;
 }
 
-/* line 690, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 781, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-success {
   background-color: #a7c04d;
 }
 
-/* line 694, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 785, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-success:hover {
   background-color: #8ea53a;
 }
 
-/* line 698, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 789, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-info {
   background-color: #93c4ef;
 }
 
-/* line 702, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 793, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-info:hover {
   background-color: #6baee9;
 }
 
-/* line 706, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 797, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-warning {
   background-color: #ffce2b;
 }
 
-/* line 710, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 801, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-warning:hover {
   background-color: #fcc200;
 }
 
-/* line 714, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 805, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-danger {
   background-color: #ef0568;
 }
 
-/* line 718, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 809, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-danger:hover {
   background-color: #c20454;
 }
 
-/* line 722, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 813, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-light {
   background-color: #fff;
   color: #333;
 }
 
-/* line 727, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 818, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-light:hover {
   background-color: #e8e8e8;
 }
 
-/* line 731, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 822, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-light:hover {
   color: #333;
 }
 
-/* line 735, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 826, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-default:focus {
   color: #606060;
 }
 
-/* line 739, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 830, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-ghost, .search-btn {
   background-color: transparent;
   color: #ededed;
   border-color: #ededed;
 }
 
-/* line 745, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 836, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-ghost:hover, .search-btn:hover {
   color: #fff;
   background-color: #ededed;
 }
 
-/* line 750, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 841, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-ghost.btn-default, .btn-default.search-btn {
   background-color: transparent;
   color: #ededed;
   border-color: #ededed;
 }
 
-/* line 756, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 847, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-ghost.btn-default:hover, .btn-default.search-btn:hover {
   color: #fff;
   background-color: #ededed;
 }
 
-/* line 761, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 852, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-ghost.btn-primary, .btn-primary.search-btn {
   background-color: transparent;
   color: #77cde3;
   border-color: #77cde3;
 }
 
-/* line 767, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 858, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-ghost.btn-primary:hover, .btn-primary.search-btn:hover {
   color: #fff;
   background-color: #77cde3;
 }
 
-/* line 772, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 863, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-ghost.btn-success, .btn-success.search-btn {
   background-color: transparent;
   color: #a7c04d;
   border-color: #a7c04d;
 }
 
-/* line 778, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 869, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-ghost.btn-success:hover, .btn-success.search-btn:hover {
   color: #fff;
   background-color: #a7c04d;
 }
 
-/* line 783, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 874, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-ghost.btn-info, .btn-info.search-btn {
   background-color: transparent;
   color: #93c4ef;
   border-color: #93c4ef;
 }
 
-/* line 789, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 880, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-ghost.btn-info:hover, .btn-info.search-btn:hover {
   color: #fff;
   background-color: #93c4ef;
 }
 
-/* line 794, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 885, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-ghost.btn-warning, .btn-warning.search-btn {
   background-color: transparent;
   color: #ffce2b;
   border-color: #ffce2b;
 }
 
-/* line 800, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 891, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-ghost.btn-warning:hover, .btn-warning.search-btn:hover {
   color: #fff;
   background-color: #ffce2b;
 }
 
-/* line 805, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 896, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-ghost.btn-danger, .btn-danger.search-btn {
   background-color: transparent;
   color: #ef0568;
   border-color: #ef0568;
 }
 
-/* line 811, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 902, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-ghost.btn-danger:hover, .btn-danger.search-btn:hover {
   color: #fff;
   background-color: #ef0568;
 }
 
-/* line 816, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 907, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-ghost.btn-light, .btn-light.search-btn {
   background-color: transparent;
   color: #fff;
   border-color: #fff;
 }
 
-/* line 822, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 913, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-ghost.btn-light:hover, .btn-light.search-btn:hover {
   color: #fff;
   background-color: #fff;
 }
 
-/* line 827, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 918, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-ghost.btn-light:hover, .btn-light.search-btn:hover {
   color: #333;
 }
 
-/* line 831, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 922, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-ghost, .search-btn,
 .btn-ghost.btn-default,
 .btn-default.search-btn {
   color: #606060;
 }
 
-/* line 837, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 928, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-ghost:hover, .search-btn:hover,
 .btn-ghost.btn-default:hover,
 .btn-default.search-btn:hover {
   color: #606060;
 }
 
-/* line 843, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 934, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-sm, .btn-group-sm > .btn, .back-btn, .done-btn {
   height: 36px;
   font-size: 12px;
@@ -15376,84 +15866,84 @@ fieldset[disabled] a.search-btn {
   border-radius: 4px;
 }
 
-/* line 852, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 943, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-sm.btn-ghost, .btn-group-sm > .btn-ghost.btn, .btn-ghost.back-btn, .back-btn.search-btn, .btn-ghost.done-btn, .done-btn.search-btn, .btn-sm.search-btn, .btn-group-sm > .search-btn.btn {
   font-weight: normal;
 }
 
-/* line 856, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 947, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-link {
   background-color: transparent;
 }
 
-/* line 860, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 951, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-link:hover {
   color: #999;
   background-color: transparent;
 }
 
-/* line 865, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 956, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-square {
   border-radius: 0;
 }
 
-/* line 869, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 960, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-pill {
   border-radius: 24px;
 }
 
-/* line 873, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 964, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-pill.btn-sm, .btn-group-sm > .btn-pill.btn, .btn-pill.back-btn, .btn-pill.done-btn {
   border-radius: 18px;
 }
 
-/* line 877, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 968, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-inline {
   margin-top: 0;
   margin-bottom: 0;
 }
 
-/* line 882, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 973, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-icon-left {
   padding-left: 18px;
 }
 
-/* line 886, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 977, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-icon-left i {
   margin-right: 7px;
 }
 
-/* line 890, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 981, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-icon-left.btn-sm, .btn-group-sm > .btn-icon-left.btn, .btn-icon-left.back-btn, .btn-icon-left.done-btn {
   padding-left: 12px;
 }
 
-/* line 894, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 985, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-icon-left.btn-sm i, .btn-group-sm > .btn-icon-left.btn i, .btn-icon-left.back-btn i, .btn-icon-left.done-btn i {
   margin-right: 5px;
 }
 
-/* line 898, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 989, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-icon-right {
   padding-right: 18px;
 }
 
-/* line 902, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 993, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-icon-right i {
   margin-left: 7px;
 }
 
-/* line 906, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 997, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-icon-right.btn-sm, .btn-group-sm > .btn-icon-right.btn, .btn-icon-right.back-btn, .btn-icon-right.done-btn {
   padding-right: 12px;
 }
 
-/* line 910, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1001, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-icon-right.btn-sm i, .btn-group-sm > .btn-icon-right.btn i, .btn-icon-right.back-btn i, .btn-icon-right.done-btn i {
   margin-left: 5px;
 }
 
-/* line 914, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1005, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-block {
   display: block;
   width: 100%;
@@ -15462,60 +15952,60 @@ fieldset[disabled] a.search-btn {
   margin-right: 0;
 }
 
-/* line 922, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1013, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .btn-block + .btn-block {
   margin-top: 20px;
 }
 
-/* line 926, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1017, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 input[type="submit"].btn-block,
 input[type="reset"].btn-block,
 input[type="button"].btn-block {
   width: 100%;
 }
 
-/* line 932, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1023, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .text-center .btn, .text-center .back-btn, .text-center .done-btn, .text-center .search-btn {
   margin-left: 5px;
   margin-right: 5px;
 }
 
-/* line 937, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1028, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .text-center .btn.btn-block, .text-center .btn-block.back-btn, .text-center .btn-block.done-btn, .text-center .btn-block.search-btn {
   margin-left: 0;
   margin-right: 0;
 }
 
 @media screen and (max-width: 768px) {
-  /* line 943, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 1034, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .mobile-center {
     text-align: center !important;
   }
 
-  /* line 946, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 1037, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .mobile-center .btn, .mobile-center .back-btn, .mobile-center .done-btn, .mobile-center .search-btn {
     margin-left: 5px !important;
     margin-right: 5px !important;
   }
 
-  /* line 950, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 1041, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .mobile-center .btn.btn-block, .mobile-center .btn-block.back-btn, .mobile-center .btn-block.done-btn, .mobile-center .btn-block.search-btn {
     margin-left: 0 !important;
     margin-right: 0 !important;
   }
 }
-/* line 956, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1047, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .text-right .btn, .text-right .back-btn, .text-right .done-btn, .text-right .search-btn {
   margin-left: 10px;
   margin-right: 0;
 }
 
-/* line 961, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1052, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .text-right .btn.btn-block, .text-right .btn-block.back-btn, .text-right .btn-block.done-btn, .text-right .btn-block.search-btn {
   margin-left: 0;
 }
 
-/* line 965, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1056, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .scroll-to-top-btn {
   display: block;
   position: absolute;
@@ -15537,7 +16027,7 @@ input[type="button"].btn-block {
   transition: color 0.3s;
 }
 
-/* line 986, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1077, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .scroll-to-top-btn > i {
   -webkit-transform: rotate(-90deg);
   -moz-transform: rotate(-90deg);
@@ -15546,13 +16036,13 @@ input[type="button"].btn-block {
   transform: rotate(-90deg);
 }
 
-/* line 994, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1085, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .scroll-to-top-btn:hover {
   color: #999;
 }
 
 @media screen and (max-width: 480px) {
-  /* line 999, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 1090, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .scroll-to-top-btn {
     width: 42px;
     height: 42px;
@@ -15560,7 +16050,7 @@ input[type="button"].btn-block {
     line-height: 38px;
   }
 }
-/* line 1007, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1098, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .load-more-btn {
   display: block;
   width: 100%;
@@ -15575,13 +16065,13 @@ input[type="button"].btn-block {
   text-transform: uppercase;
 }
 
-/* line 1021, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1112, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .load-more-btn:hover, .load-more-btn:focus {
   color: #999;
   text-decoration: none;
 }
 
-/* line 1026, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1117, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .social-signup-btn {
   position: relative;
   display: block;
@@ -15595,7 +16085,7 @@ input[type="button"].btn-block {
   margin-bottom: 12px;
 }
 
-/* line 1039, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1130, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .social-signup-btn > i {
   display: block;
   position: absolute;
@@ -15612,17 +16102,17 @@ input[type="button"].btn-block {
   transition: width 0.3s;
 }
 
-/* line 1055, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1146, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .social-signup-btn > i:before {
   line-height: 48px;
 }
 
-/* line 1059, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1150, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .social-signup-btn > i.socicon-googleplus {
   font-size: 18px;
 }
 
-/* line 1063, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1154, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .social-signup-btn > span {
   opacity: 1;
   -webkit-transition: opacity 0.2s;
@@ -15630,43 +16120,43 @@ input[type="button"].btn-block {
   transition: opacity 0.2s;
 }
 
-/* line 1070, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1161, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .social-signup-btn:focus, .social-signup-btn:active {
   color: #fff;
   text-decoration: none;
 }
 
-/* line 1075, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1166, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .social-signup-btn:hover {
   color: #fff;
 }
 
-/* line 1079, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1170, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .social-signup-btn:hover > i {
   width: 100%;
 }
 
-/* line 1083, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1174, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .social-signup-btn:hover > span {
   opacity: 0;
 }
 
-/* line 1087, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1178, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .social-signup-btn.ssb-facebook {
   background-color: #3b5998;
 }
 
-/* line 1091, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1182, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .social-signup-btn.ssb-google {
   background-color: #dd4b39;
 }
 
-/* line 1095, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1186, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .social-signup-btn.ssb-twitter {
   background-color: #55acee;
 }
 
-/* line 1099, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1190, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .app-store-btn,
 .google-play-btn,
 .amazon-btn,
@@ -15681,29 +16171,29 @@ input[type="button"].btn-block {
   background-size: cover;
 }
 
-/* line 1113, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1204, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .app-store-btn {
   background-image: url(../img/market-btns/app-store.png);
 }
 
-/* line 1117, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1208, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .google-play-btn {
   background-image: url(../img/market-btns/google-play.png);
 }
 
-/* line 1121, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1212, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .amazon-btn {
   background-image: url(../img/market-btns/amazon.png);
 }
 
-/* line 1125, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1216, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .windows-btn {
   width: 157px;
   height: 40px;
   background-image: url(../img/market-btns/windows.png);
 }
 
-/* line 1131, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1222, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .text-center .app-store-btn,
 .text-center .google-play-btn,
 .text-center .amazon-btn,
@@ -15712,7 +16202,7 @@ input[type="button"].btn-block {
   margin-right: 7px;
 }
 
-/* line 1139, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1230, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .text-left .app-store-btn,
 .text-left .google-play-btn,
 .text-left .amazon-btn,
@@ -15721,7 +16211,7 @@ input[type="button"].btn-block {
   margin-right: 0;
 }
 
-/* line 1147, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1238, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .search-btn {
   width: 36px;
   height: 36px;
@@ -15733,19 +16223,19 @@ input[type="button"].btn-block {
   margin-left: 20px;
 }
 
-/* line 1158, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1249, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .search-btn > i::before {
   font-size: 20px;
   margin-top: -3px;
 }
 
-/* line 1163, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1254, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .search-btn:hover, .search-btn.active {
   background-color: transparent;
   color: #606060;
 }
 
-/* line 1168, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1259, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .search-btn:focus {
   color: #606060;
 }
@@ -15753,17 +16243,17 @@ input[type="button"].btn-block {
 /*------------------------------------------------------------------
   	[Work]
 ------------------------------------------------------------------*/
-/* line 1175, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1266, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .work {
   position: relative;
 }
 
-/* line 1179, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1270, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .work .work-overlay {
   position: relative;
 }
 
-/* line 1183, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1274, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .work .work-overlay:before {
   position: absolute;
   top: 0;
@@ -15777,7 +16267,7 @@ input[type="button"].btn-block {
   transition-timing-function: cubic-bezier(0.7, 1, 0.7, 1);
 }
 
-/* line 1196, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1287, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .work .work-content {
   position: absolute;
   left: 0;
@@ -15792,7 +16282,7 @@ input[type="button"].btn-block {
   transition-timing-function: cubic-bezier(0.7, 1, 0.7, 1);
 }
 
-/* line 1210, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1301, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .work:hover .work-overlay:before {
   background: rgba(0, 0, 0, 0.5);
   transition-duration: 300ms;
@@ -15800,7 +16290,7 @@ input[type="button"].btn-block {
   transition-timing-function: cubic-bezier(0.7, 1, 0.7, 1);
 }
 
-/* line 1217, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1308, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .work:hover .work-content {
   opacity: 1;
   -webkit-transform: translate3d(0, 0, 0);
@@ -15814,24 +16304,24 @@ input[type="button"].btn-block {
 /*------------------------------------------------------------------
   	[Footer]
 ------------------------------------------------------------------*/
-/* line 1230, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1321, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .footer .footer-logo {
   width: 85px;
   height: 21px;
 }
 
-/* line 1235, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1326, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .footer .footer-list {
   margin-bottom: 0;
 }
 
-/* line 1239, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1330, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .footer .footer-list-item {
   color: #777984;
   margin-bottom: 15px;
 }
 
-/* line 1244, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1335, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .footer .footer-list-item:last-child {
   margin-bottom: 0;
 }
@@ -15840,13 +16330,13 @@ input[type="button"].btn-block {
   	[Header]
 ------------------------------------------------------------------*/
 /* Navbar */
-/* line 1252, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1343, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .header .navbar {
   margin-bottom: 0;
 }
 
 /* Navbar Toggle */
-/* line 1257, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1348, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .header .navbar-toggle {
   width: 25px;
   height: 25px;
@@ -15855,7 +16345,7 @@ input[type="button"].btn-block {
   margin: 35px 0;
 }
 
-/* line 1265, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1356, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .header .navbar-toggle .toggle-icon {
   position: relative;
   width: 21px;
@@ -15867,7 +16357,7 @@ input[type="button"].btn-block {
   transition-timing-function: cubic-bezier(0.7, 1, 0.7, 1);
 }
 
-/* line 1276, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1367, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .header .navbar-toggle .toggle-icon:before, .header .navbar-toggle .toggle-icon:after {
   position: absolute;
   left: 0;
@@ -15875,7 +16365,7 @@ input[type="button"].btn-block {
   content: " ";
 }
 
-/* line 1283, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1374, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .header .navbar-toggle .toggle-icon:before {
   width: 10px;
   height: 1px;
@@ -15888,7 +16378,7 @@ input[type="button"].btn-block {
   transition-timing-function: cubic-bezier(0.7, 1, 0.7, 1);
 }
 
-/* line 1295, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1386, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .header .navbar-toggle .toggle-icon:after {
   width: 16px;
   height: 1px;
@@ -15901,7 +16391,7 @@ input[type="button"].btn-block {
   transition-timing-function: cubic-bezier(0.7, 1, 0.7, 1);
 }
 
-/* line 1307, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1398, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .header .navbar-toggle:hover .toggle-icon {
   background: #17bed2;
   transition-duration: 300ms;
@@ -15909,7 +16399,7 @@ input[type="button"].btn-block {
   transition-timing-function: cubic-bezier(0.7, 1, 0.7, 1);
 }
 
-/* line 1314, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1405, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .header .navbar-toggle:hover .toggle-icon:before, .header .navbar-toggle:hover .toggle-icon:after {
   width: 21px;
   height: 1px;
@@ -15919,13 +16409,13 @@ input[type="button"].btn-block {
   transition-timing-function: cubic-bezier(0.7, 1, 0.7, 1);
 }
 
-/* line 1323, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1414, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .header .navbar-toggle:hover .toggle-icon.is-clicked {
   background: rgba(81, 87, 105, 0);
 }
 
 /* Navbar Logo */
-/* line 1328, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1419, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .header .navbar-logo {
   width: 100px;
   height: 100px;
@@ -15934,18 +16424,18 @@ input[type="button"].btn-block {
   line-height: 65px;
 }
 
-/* line 1336, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1427, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .header .navbar-logo-wrap {
   display: inline-block;
   padding: 15px 0;
 }
 
-/* line 1341, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1432, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .header .navbar-logo-wrap:focus, .header .navbar-logo-wrap:hover {
   text-decoration: none;
 }
 
-/* line 1345, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1436, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .header .navbar-logo-img {
   display: inline-block;
   width: 85px;
@@ -15956,7 +16446,7 @@ input[type="button"].btn-block {
 }
 
 /* Navbar */
-/* line 1355, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1446, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .header .navbar-nav {
   padding-left: 0;
   margin-bottom: 0;
@@ -15964,18 +16454,18 @@ input[type="button"].btn-block {
 }
 
 /* Nav */
-/* line 1362, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1453, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .header .nav-item {
   position: relative;
   display: block;
 }
 
-/* line 1367, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1458, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .header .nav-item:last-child .nav-item-child {
   padding-right: 0;
 }
 
-/* line 1371, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1462, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .header .nav-item-child {
   position: relative;
   display: block;
@@ -15987,12 +16477,12 @@ input[type="button"].btn-block {
   padding: 20px;
 }
 
-/* line 1382, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1473, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .header .nav-item-child.active {
   position: relative;
 }
 
-/* line 1386, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1477, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .header .nav-item-child.active:after {
   position: absolute;
   top: 45px;
@@ -16007,59 +16497,59 @@ input[type="button"].btn-block {
 @media (max-width: 991px) {
   /* Bootstrap collapse of navigation with a maximum width: 991px
     (Change it to any breakpoint you want to be collapsed) */
-  /* line 1400, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 1491, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .header .navbar-toggle {
     display: block;
   }
 
-  /* line 1403, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 1494, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .header .navbar-collapse.collapse {
     display: none !important;
   }
 
-  /* line 1406, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 1497, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .header .navbar-collapse.collapse.in {
     display: block !important;
     overflow-y: auto !important;
   }
 
-  /* line 1410, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 1501, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .header .nav-collapse {
     padding-left: 0;
     padding-right: 0;
   }
 
-  /* line 1414, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 1505, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .header .navbar-nav {
     margin: 0;
     float: none;
   }
 
-  /* line 1418, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 1509, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .header .navbar-nav .nav-item {
     float: none;
   }
 
   /* Menu Container */
-  /* line 1422, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 1513, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .header .menu-container:before, .header .menu-container:after {
     content: " ";
     display: table;
   }
 
-  /* line 1426, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 1517, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .header .menu-container:after {
     clear: both;
   }
 
   /* Navbar Nav */
-  /* line 1430, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 1521, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .header .nav-item-child {
     line-height: 1.4;
     padding: 12px 12px 12px 15px;
   }
 
-  /* line 1434, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 1525, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .header .nav-item-child.active:after {
     position: absolute;
     top: 20px;
@@ -16068,7 +16558,7 @@ input[type="button"].btn-block {
 /* Media Queries below 767px */
 @media (max-width: 767px) {
   /* Menu Container */
-  /* line 1443, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 1534, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .header .menu-container {
     padding-left: 15px;
     padding-right: 15px;
@@ -16076,7 +16566,7 @@ input[type="button"].btn-block {
     margin-right: 0;
   }
 
-  /* line 1449, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 1540, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .header .navbar > .container {
     width: auto;
     padding-left: 0;
@@ -16085,7 +16575,7 @@ input[type="button"].btn-block {
     margin-right: 0;
   }
 
-  /* line 1456, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 1547, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .header .navbar > .container > .nav-collapse {
     padding-left: 0;
     padding-right: 0;
@@ -16096,7 +16586,7 @@ input[type="button"].btn-block {
 /* Media Queries above 992px */
 @media (min-width: 992px) {
   /* Navbar */
-  /* line 1467, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 1558, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .header .navbar-nav-right {
     float: right;
   }
@@ -16104,7 +16594,7 @@ input[type="button"].btn-block {
 /*------------------------------------------------------------------
   	[Contact]
 ------------------------------------------------------------------*/
-/* line 1475, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1566, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .contact-list > li {
   font-size: 13px;
   color: #81848f;
@@ -16114,7 +16604,7 @@ input[type="button"].btn-block {
 /*--------------------------------------------------
     [Back To Top Theme Button]
 ----------------------------------------------------*/
-/* line 1484, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1575, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .back-to-top {
   position: fixed;
   right: 10px;
@@ -16143,7 +16633,7 @@ input[type="button"].btn-block {
   transition-timing-function: cubic-bezier(0.7, 1, 0.7, 1);
 }
 
-/* line 1512, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1603, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .back-to-top:hover {
   color: #fff;
   transition-duration: 300ms;
@@ -16151,13 +16641,13 @@ input[type="button"].btn-block {
   transition-timing-function: cubic-bezier(0.7, 1, 0.7, 1);
 }
 
-/* line 1519, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1610, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .back-to-top:focus, .back-to-top:hover {
   text-decoration: none;
 }
 
 /* The Button Becomes Visible */
-/* line 1524, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1615, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .back-to-top.back-to-top-is-visible {
   visibility: visible;
   opacity: .6;
@@ -16169,7 +16659,7 @@ input[type="button"].btn-block {
   transition-timing-function: cubic-bezier(0.7, 1, 0.7, 1);
 }
 
-/* line 1535, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1626, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .back-to-top.back-to-top-is-visible:hover {
   opacity: 1;
   transition-duration: 300ms;
@@ -16178,12 +16668,12 @@ input[type="button"].btn-block {
 }
 
 /* If the user keeps scrolling down, the button is out of focus and becomes less visible */
-/* line 1543, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1634, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .back-to-top.back-to-top-fade-out {
   opacity: .4;
 }
 
-/* line 1547, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1638, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .back-to-top.back-to-top-fade-out:hover {
   opacity: 1;
   transition-duration: 300ms;
@@ -16194,7 +16684,7 @@ input[type="button"].btn-block {
 /*------------------------------------------------------------------
   	[Form Control]
 ------------------------------------------------------------------*/
-/* line 1557, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1648, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .form-control {
   height: 50px;
   font-size: 14px;
@@ -16207,50 +16697,50 @@ input[type="button"].btn-block {
   padding-left: 15px;
 }
 
-/* line 1569, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1660, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .form-control::-moz-placeholder {
   color: #a6a7aa;
 }
 
-/* line 1573, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1664, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .form-control:-ms-input-placeholder {
   color: #a6a7aa;
 }
 
-/* line 1577, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1668, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .form-control::-webkit-input-placeholder {
   color: #a6a7aa;
 }
 
-/* line 1581, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1672, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .form-control:focus {
   color: #515769;
   box-shadow: none;
 }
 
-/* line 1586, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1677, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .form-control:focus::-moz-placeholder {
   color: #515769;
 }
 
-/* line 1590, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1681, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .form-control:focus:-ms-input-placeholder {
   color: #515769;
 }
 
-/* line 1594, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1685, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .form-control:focus::-webkit-input-placeholder {
   color: #515769;
 }
 
 /* Media Queries below 600px */
 @media (max-width: 600px) {
-  /* line 1601, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 1692, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .masonry-grid .masonry-grid-item {
     width: 100%;
   }
 
-  /* line 1604, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 1695, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .masonry-grid .masonry-grid-item.col-12, .masonry-grid .masonry-grid-item.col-11, .masonry-grid .masonry-grid-item.col-10, .masonry-grid .masonry-grid-item.col-9, .masonry-grid .masonry-grid-item.col-8, .masonry-grid .masonry-grid-item.col-7, .masonry-grid .masonry-grid-item.col-6, .masonry-grid .masonry-grid-item.col-5, .masonry-grid .masonry-grid-item.col-4, .masonry-grid .masonry-grid-item.col-3, .masonry-grid .masonry-grid-item.col-2, .masonry-grid .masonry-grid-item.col-1 {
     width: 100%;
   }
@@ -16258,7 +16748,7 @@ input[type="button"].btn-block {
 /*------------------------------------------------------------------
     [Swiper Slider]
 ------------------------------------------------------------------*/
-/* line 1612, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1703, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .swiper-slider {
   position: relative;
   width: 100%;
@@ -16266,7 +16756,7 @@ input[type="button"].btn-block {
   overflow: hidden;
 }
 
-/* line 1619, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1710, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .swiper-clients-img {
   display: block;
   width: 190px;
@@ -16279,7 +16769,7 @@ input[type="button"].btn-block {
   transition-timing-function: cubic-bezier(0.7, 1, 0.7, 1);
 }
 
-/* line 1631, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1722, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .swiper-clients-img:hover {
   opacity: .8;
   transition-duration: 200ms;
@@ -16290,37 +16780,37 @@ input[type="button"].btn-block {
 /*------------------------------------------------------------------
   	[Text Colors]
 ------------------------------------------------------------------*/
-/* line 1641, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1732, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .color-base {
   color: #17bed2;
 }
 
-/* line 1645, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1736, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .color-white {
   color: #fff;
 }
 
-/* line 1649, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1740, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .color-heading {
   color: #515769;
 }
 
-/* line 1653, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1744, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .color-subtitle {
   color: #a6a7aa;
 }
 
-/* line 1657, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1748, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .color-link {
   color: #81848f;
 }
 
-/* line 1661, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1752, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .color-link-hover {
   color: #999caa;
 }
 
-/* line 1665, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1756, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .color-sky-light {
   color: #fafafa;
 }
@@ -16328,37 +16818,37 @@ input[type="button"].btn-block {
 /*------------------------------------------------------------------
   	[Background Colors]
 ------------------------------------------------------------------*/
-/* line 1672, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1763, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .bg-color-base {
   background: #17bed2;
 }
 
-/* line 1676, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1767, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .bg-color-white {
   background: #fff;
 }
 
-/* line 1680, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1771, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .bg-color-heading {
   background: #515769;
 }
 
-/* line 1684, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1775, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .bg-color-subtitle {
   background: #a6a7aa;
 }
 
-/* line 1688, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1779, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .bg-color-link {
   background: #81848f;
 }
 
-/* line 1692, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1783, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .bg-color-link-hover {
   background: #999caa;
 }
 
-/* line 1696, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1787, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .bg-color-sky-light {
   background: #fafafa;
 }
@@ -16366,34 +16856,34 @@ input[type="button"].btn-block {
 /*------------------------------------------------------------------
   	[Content]
 ------------------------------------------------------------------*/
-/* line 1703, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1794, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .content {
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
-/* line 1708, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1799, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .content-sm {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+/* line 1804, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+.content-md {
   padding-top: 60px;
   padding-bottom: 60px;
 }
 
-/* line 1713, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
-.content-md {
+/* line 1809, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+.content-lg {
   padding-top: 80px;
   padding-bottom: 80px;
-}
-
-/* line 1718, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
-.content-lg {
-  padding-top: 100px;
-  padding-bottom: 100px;
 }
 
 /*------------------------------------------------------------------
     [Full Width]
 ------------------------------------------------------------------*/
-/* line 1726, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1817, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .full-width {
   width: 100%;
   height: auto;
@@ -16402,27 +16892,27 @@ input[type="button"].btn-block {
 /*--------------------------------------------------
     [Font Weight]
 ----------------------------------------------------*/
-/* line 1734, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1825, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .fweight-300 {
   font-weight: 300 !important;
 }
 
-/* line 1738, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1829, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .fweight-400 {
   font-weight: 400 !important;
 }
 
-/* line 1742, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1833, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .fweight-500 {
   font-weight: 500 !important;
 }
 
-/* line 1746, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1837, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .fweight-600 {
   font-weight: 600 !important;
 }
 
-/* line 1750, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1841, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .fweight-700 {
   font-weight: 700 !important;
 }
@@ -16430,22 +16920,22 @@ input[type="button"].btn-block {
 /*------------------------------------------------------------------
     [Left margin]
 ------------------------------------------------------------------*/
-/* line 1757, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1848, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .margin-l-0 {
   margin-left: 0 !important;
 }
 
-/* line 1761, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1852, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .margin-l-5 {
   margin-left: 5px !important;
 }
 
-/* line 1765, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1856, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .margin-l-10 {
   margin-left: 10px !important;
 }
 
-/* line 1769, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1860, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .margin-l-20 {
   margin-left: 20px !important;
 }
@@ -16453,22 +16943,22 @@ input[type="button"].btn-block {
 /*------------------------------------------------------------------
     [Right margin]
 ------------------------------------------------------------------*/
-/* line 1776, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1867, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .margin-r-0 {
   margin-right: 0 !important;
 }
 
-/* line 1780, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1871, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .margin-r-5 {
   margin-right: 5px !important;
 }
 
-/* line 1784, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1875, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .margin-r-10 {
   margin-right: 10px !important;
 }
 
-/* line 1788, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1879, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .margin-r-20 {
   margin-right: 20px !important;
 }
@@ -16476,62 +16966,62 @@ input[type="button"].btn-block {
 /*------------------------------------------------------------------
     [Bottom margin]
 ------------------------------------------------------------------*/
-/* line 1795, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1886, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .margin-b-0 {
   margin-bottom: 0 !important;
 }
 
-/* line 1799, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1890, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .margin-b-5 {
   margin-bottom: 5px !important;
 }
 
-/* line 1803, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1894, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .margin-b-10 {
   margin-bottom: 10px !important;
 }
 
-/* line 1807, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1898, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .margin-b-20 {
   margin-bottom: 20px !important;
 }
 
-/* line 1811, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1902, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .margin-b-30 {
   margin-bottom: 30px !important;
 }
 
-/* line 1815, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1906, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .margin-b-40 {
   margin-bottom: 40px !important;
 }
 
-/* line 1819, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1910, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .margin-b-50 {
   margin-bottom: 50px !important;
 }
 
-/* line 1823, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1914, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .margin-b-60 {
   margin-bottom: 60px !important;
 }
 
-/* line 1827, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1918, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .margin-b-70 {
   margin-bottom: 70px !important;
 }
 
-/* line 1831, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1922, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .margin-b-80 {
   margin-bottom: 80px !important;
 }
 
-/* line 1835, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1926, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .margin-b-90 {
   margin-bottom: 90px !important;
 }
 
-/* line 1839, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 1930, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .margin-b-100 {
   margin-bottom: 100px !important;
 }
@@ -16540,62 +17030,62 @@ input[type="button"].btn-block {
     [Top margin below 992px]
 ------------------------------------------------------------------*/
 @media (max-width: 992px) {
-  /* line 1847, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 1938, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .md-margin-b-0 {
     margin-bottom: 0 !important;
   }
 
-  /* line 1850, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 1941, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .md-margin-b-5 {
     margin-bottom: 5px !important;
   }
 
-  /* line 1853, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 1944, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .md-margin-b-10 {
     margin-bottom: 10px !important;
   }
 
-  /* line 1856, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 1947, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .md-margin-b-20 {
     margin-bottom: 20px !important;
   }
 
-  /* line 1859, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 1950, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .md-margin-b-30 {
     margin-bottom: 30px !important;
   }
 
-  /* line 1862, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 1953, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .md-margin-b-40 {
     margin-bottom: 40px !important;
   }
 
-  /* line 1865, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 1956, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .md-margin-b-50 {
     margin-bottom: 50px !important;
   }
 
-  /* line 1868, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 1959, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .md-margin-b-60 {
     margin-bottom: 60px !important;
   }
 
-  /* line 1871, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 1962, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .md-margin-b-70 {
     margin-bottom: 70px !important;
   }
 
-  /* line 1874, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 1965, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .md-margin-b-80 {
     margin-bottom: 80px !important;
   }
 
-  /* line 1877, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 1968, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .md-margin-b-90 {
     margin-bottom: 90px !important;
   }
 
-  /* line 1880, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 1971, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .md-margin-b-100 {
     margin-bottom: 100px !important;
   }
@@ -16604,62 +17094,62 @@ input[type="button"].btn-block {
     [Top margin below 768px]
 ------------------------------------------------------------------*/
 @media (max-width: 768px) {
-  /* line 1889, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 1980, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .sm-margin-b-0 {
     margin-bottom: 0 !important;
   }
 
-  /* line 1892, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 1983, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .sm-margin-b-5 {
     margin-bottom: 5px !important;
   }
 
-  /* line 1895, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 1986, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .sm-margin-b-10 {
     margin-bottom: 10px !important;
   }
 
-  /* line 1898, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 1989, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .sm-margin-b-20 {
     margin-bottom: 20px !important;
   }
 
-  /* line 1901, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 1992, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .sm-margin-b-30 {
     margin-bottom: 30px !important;
   }
 
-  /* line 1904, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 1995, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .sm-margin-b-40 {
     margin-bottom: 40px !important;
   }
 
-  /* line 1907, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 1998, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .sm-margin-b-50 {
     margin-bottom: 50px !important;
   }
 
-  /* line 1910, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 2001, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .sm-margin-b-60 {
     margin-bottom: 60px !important;
   }
 
-  /* line 1913, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 2004, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .sm-margin-b-70 {
     margin-bottom: 70px !important;
   }
 
-  /* line 1916, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 2007, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .sm-margin-b-80 {
     margin-bottom: 80px !important;
   }
 
-  /* line 1919, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 2010, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .sm-margin-b-90 {
     margin-bottom: 90px !important;
   }
 
-  /* line 1922, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 2013, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .sm-margin-b-100 {
     margin-bottom: 100px !important;
   }
@@ -16668,62 +17158,62 @@ input[type="button"].btn-block {
     [Top margin below 480px]
 ------------------------------------------------------------------*/
 @media (max-width: 480px) {
-  /* line 1931, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 2022, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .xs-margin-b-0 {
     margin-bottom: 0 !important;
   }
 
-  /* line 1934, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 2025, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .xs-margin-b-5 {
     margin-bottom: 5px !important;
   }
 
-  /* line 1937, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 2028, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .xs-margin-b-10 {
     margin-bottom: 10px !important;
   }
 
-  /* line 1940, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 2031, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .xs-margin-b-20 {
     margin-bottom: 20px !important;
   }
 
-  /* line 1943, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 2034, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .xs-margin-b-30 {
     margin-bottom: 30px !important;
   }
 
-  /* line 1946, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 2037, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .xs-margin-b-40 {
     margin-bottom: 40px !important;
   }
 
-  /* line 1949, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 2040, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .xs-margin-b-50 {
     margin-bottom: 50px !important;
   }
 
-  /* line 1952, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 2043, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .xs-margin-b-60 {
     margin-bottom: 60px !important;
   }
 
-  /* line 1955, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 2046, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .xs-margin-b-70 {
     margin-bottom: 70px !important;
   }
 
-  /* line 1958, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 2049, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .xs-margin-b-80 {
     margin-bottom: 80px !important;
   }
 
-  /* line 1961, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 2052, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .xs-margin-b-90 {
     margin-bottom: 90px !important;
   }
 
-  /* line 1964, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+  /* line 2055, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
   .xs-margin-b-100 {
     margin-bottom: 100px !important;
   }
@@ -16731,17 +17221,17 @@ input[type="button"].btn-block {
 /*--------------------------------------------------
     [Height]
 ----------------------------------------------------*/
-/* line 1972, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 2063, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .height-100 {
   height: 100px !important;
 }
 
-/* line 1976, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 2067, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .height-200 {
   height: 200px !important;
 }
 
-/* line 1980, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
+/* line 2071, /Users/anli/time-exchange/app/assets/stylesheets/application.scss */
 .height-300 {
   height: 300px !important;
 }
